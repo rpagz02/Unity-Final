@@ -14,7 +14,7 @@ public class LMG : Weapon
         m_bulletSpeed = 120;
         m_shotRecoil = 0;
         m_rateOfFire = 1f;
-        m_Automatic = false;
+        m_Automatic = true;
 
         m_WeaponID = (int)Weapons.LMG;
 

@@ -130,7 +130,8 @@ public abstract class Weapon : MonoBehaviour
                     if (m_curClipAmmo > 0)
                     {
                         Debug.Log("Semi-Auto fire called");
-                        FireBullet();
+                        if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge"))
+                            FireBullet();
                     }
                 }
             }
@@ -148,20 +149,29 @@ public abstract class Weapon : MonoBehaviour
     }
 
 
-    protected void ReloadHandler()
+    protected virtual void ReloadHandler()
     {
+
         if (Input.GetKeyDown("r") && m_curClipAmmo < m_clipSize)
         {
-            for (int i = m_curClipAmmo; i < m_clipSize; i++)
+            if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
             {
-                if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+                GetComponent<Animator>().SetBool("isReloading", true);
+                for (int i = m_curClipAmmo; i < m_clipSize; i++)
                 {
-                    m_curClipAmmo++;
-                    Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(m_WeaponID, "sub", 1);
-                }
-                else
-                    return;
+                    if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+                    {
+                        m_curClipAmmo++;
+                        Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(m_WeaponID, "sub", 1);
+                    }
+                    else
+                        return;
 
+                }
+            }
+            if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("isReloading"))
+            {
+                GetComponent<Animator>().SetBool("isReloading", false);
             }
         }
     }
