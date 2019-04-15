@@ -40,7 +40,6 @@ public abstract class Weapon : MonoBehaviour
 
     #endregion Base Weapon Variables
 
-    // Constructor
     public Weapon()
     {
 
@@ -56,14 +55,14 @@ public abstract class Weapon : MonoBehaviour
         m_Automatic = false;
         Debug.Log("Base Weapon Constructor Called");
     }
-    // Start
+
     private void Start()
     {
         // toggled used for ADS method
         toggle = false;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
-    // Update
+
     protected virtual void Update()
     {
         m_ammoPool = Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID);
@@ -94,6 +93,9 @@ public abstract class Weapon : MonoBehaviour
             ADSToggle();
     }
     #endregion ADS methods
+
+    
+
 
     protected void WeaponSprintAnim()
     {
@@ -130,7 +132,8 @@ public abstract class Weapon : MonoBehaviour
                     if (m_curClipAmmo > 0)
                     {
                         Debug.Log("Semi-Auto fire called");
-                        if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge"))
+                        if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot"))
                             FireBullet();
                     }
                 }
@@ -147,7 +150,6 @@ public abstract class Weapon : MonoBehaviour
         //else      
             //Debug.Log("Out of Ammo!");      
     }
-
 
     protected virtual void ReloadHandler()
     {
@@ -175,5 +177,6 @@ public abstract class Weapon : MonoBehaviour
             }
         }
     }
+   
     #endregion Projectile methods
 }
