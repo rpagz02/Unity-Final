@@ -114,9 +114,8 @@ public abstract class Weapon : MonoBehaviour
 
         Vector3 direction = m_shotPoint.transform.position;
         GameObject bullet = Instantiate(m_projectile, direction, m_shotPoint.transform.rotation);
+        bullet.GetComponent<Projectile>().setBulletDamage(m_bulletDmg);
         bullet.GetComponent<Rigidbody>().velocity = transform.forward * m_bulletSpeed;
-
-        Destroy(bullet, 2.0f);
 
         m_curClipAmmo--;
     }
