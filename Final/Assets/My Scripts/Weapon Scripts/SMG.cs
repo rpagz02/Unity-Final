@@ -14,9 +14,34 @@ public class SMG : Weapon
         m_bulletSpeed = 120;
         m_shotRecoil = 0;
         m_rateOfFire = 1f;
-        m_Automatic = false;
+        m_Automatic = true;
 
         m_WeaponID = (int)Weapons.SMG;
         Debug.Log("SMG Constructor Called");
+
+    }
+
+
+    protected override void ReloadHandler()
+    {
+        if (Input.GetKeyDown("r") && m_curClipAmmo < m_clipSize)
+        {
+            GetComponent<Animator>().SetBool("isReloading", true);
+            for (int i = m_curClipAmmo; i < m_clipSize; i++)
+            {
+                if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+                {
+                    m_curClipAmmo++;
+                    Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(m_WeaponID, "sub", 1);
+                }
+                else
+                    return;
+
+            }
+        }
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge"))
+        {
+            GetComponent<Animator>().SetBool("isReloading", false);
+        }
     }
 }

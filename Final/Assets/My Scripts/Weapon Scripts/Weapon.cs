@@ -36,6 +36,8 @@ public abstract class Weapon : MonoBehaviour
     protected private bool isReloading;
     public GameObject m_shotPoint;
     public GameObject m_projectile;
+    public GameObject VFX;
+    private AudioSource SFX;
    
 
     #endregion Base Weapon Variables
@@ -61,6 +63,7 @@ public abstract class Weapon : MonoBehaviour
         // toggled used for ADS method
         toggle = false;
         Player = GameObject.FindGameObjectWithTag("Player");
+        SFX = GetComponent<AudioSource>();
     }
 
     protected virtual void Update()
@@ -111,6 +114,8 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void FireBullet()
     {
         GetComponent<Animator>().SetTrigger("Shot");
+        VFX.GetComponent<ParticleSystem>().Play();
+        SFX.Play();
 
         Vector3 direction = m_shotPoint.transform.position;
         GameObject bullet = Instantiate(m_projectile, direction, m_shotPoint.transform.rotation);
@@ -146,8 +151,7 @@ public abstract class Weapon : MonoBehaviour
                 }
             }
         }
-        //else      
-            //Debug.Log("Out of Ammo!");      
+     
     }
 
     protected virtual void ReloadHandler()

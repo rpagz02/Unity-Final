@@ -20,8 +20,7 @@ public class Door : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            //GetComponent<Animation>().Play();
-            Debug.Log("Door Open");
+            GetComponent<Animator>().SetTrigger("Open");
         }
     }
 }
