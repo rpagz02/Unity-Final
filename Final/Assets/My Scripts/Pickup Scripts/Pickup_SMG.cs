@@ -8,7 +8,7 @@ public class Pickup_SMG : Pickup
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<FPS_Inventory>().AddWeaponToInventory((int)Weapon.SMG, 30);
+            other.gameObject.GetComponent<FPS_Inventory>().AddWeaponToInventory((int)Weapon.SMG, 100);
             other.gameObject.GetComponent<FPS_WeaponHandling>().EquipPickedUpWeapon((int)Weapon.SMG);
             Destroy(this.gameObject);
         }

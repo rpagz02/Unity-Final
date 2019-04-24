@@ -10,7 +10,7 @@ public class Pistol : Weapon
         m_clipSize = 7;
         m_ammoPool = 0;
         m_bulletDmg = 25.5f;
-        m_bulletRange = 30f;
+        m_bulletRange = 2f;
         m_bulletSpeed = 100f;
         m_shotRecoil = 0;
         m_rateOfFire = 0.2f;

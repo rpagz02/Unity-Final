@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
    private float m_projectileDmg = 0;
     private float baseDamage;
     private float range_timer = 0;
+    private float range = 0;
 
     private float bulletWeight;
     Vector3 bulletDrop_Gravity = Vector3.zero;
@@ -19,9 +20,10 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         // Self destruct the projectile after a 2 second delay
-        Destroy(this.gameObject, 2.0f);
+        Destroy(this.gameObject, range);
         // Testing out the damage falloff logic here
         range_timer += Time.deltaTime;
+
         if (range_timer <= 0.18f)
             m_projectileDmg = baseDamage;
         else if (range_timer <= 0.45f)
@@ -47,4 +49,6 @@ public class Projectile : MonoBehaviour
 
     public void setBulletDamage(float dmg) { m_projectileDmg = dmg; baseDamage = dmg; }
     public float getBulletDamage() { return m_projectileDmg; }
+    public float getBulletRange() { return range; }
+    public void setBulletRange(float _range) { range = _range; }
 }

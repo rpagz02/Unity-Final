@@ -34,17 +34,16 @@ public abstract class Weapon : MonoBehaviour
     protected private bool toggle;
     protected private GameObject Player;
     protected private bool isReloading;
+    protected private float m_Timer;
     public GameObject m_shotPoint;
     public GameObject m_projectile;
     public GameObject VFX;
     private AudioSource SFX;
-   
-
     #endregion Base Weapon Variables
 
     public Weapon()
     {
-
+        m_Timer = 0;
         isReloading = false;
         m_clipSize = 0;
         m_curClipAmmo = 0;
@@ -54,7 +53,7 @@ public abstract class Weapon : MonoBehaviour
         m_bulletSpeed = 0;
         m_shotRecoil = 0;
         m_rateOfFire = 0;
-        m_Automatic = false;
+     // m_Automatic = false;
         Debug.Log("Base Weapon Constructor Called");
     }
 
@@ -80,6 +79,7 @@ public abstract class Weapon : MonoBehaviour
     // Helper Methods:                                                    //
     // These cannot be overridden and will be applied to all weapons      //
     ////////////////////////////////////////////////////////////////////////
+    
     #region ADS methods
     // Helper Method for ADS()
     protected void ADSToggle()
@@ -97,9 +97,6 @@ public abstract class Weapon : MonoBehaviour
     }
     #endregion ADS methods
 
-    
-
-
     protected void WeaponSprintAnim()
     {
         if (Player.GetComponent<FPS_Controller>().GetSprintStatus() == true)
@@ -110,16 +107,16 @@ public abstract class Weapon : MonoBehaviour
     }
 
     #region Projectile Methods
-
     protected virtual void FireBullet()
     {
         GetComponent<Animator>().SetTrigger("Shot");
         VFX.GetComponent<ParticleSystem>().Play();
         SFX.Play();
 
-        Vector3 direction = m_shotPoint.transform.position;
+        Vector3 direction = m_shotPoint.transform.position + Random.insideUnitSphere * 0.1f;
         GameObject bullet = Instantiate(m_projectile, direction, m_shotPoint.transform.rotation);
         bullet.GetComponent<Projectile>().setBulletDamage(m_bulletDmg);
+        bullet.GetComponent<Projectile>().setBulletRange(m_bulletRange);
         bullet.GetComponent<Rigidbody>().velocity = transform.forward * m_bulletSpeed;
 
         m_curClipAmmo--;
@@ -137,7 +134,8 @@ public abstract class Weapon : MonoBehaviour
                     {
                         Debug.Log("Semi-Auto fire called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
-                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot"))
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
+                                !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
                             FireBullet();
                     }
                 }
@@ -147,8 +145,18 @@ public abstract class Weapon : MonoBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     Debug.Log("Automatic Fire Called");
-                    FireBullet();
-                }
+                    if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+                    {
+                        m_Timer += Time.deltaTime;
+                        if (m_Timer > 0.05f)
+                        {
+                            FireBullet();
+                            m_Timer = 0;
+                        }
+                    }
+                    }
             }
         }
      
@@ -180,6 +188,5 @@ public abstract class Weapon : MonoBehaviour
             }
         }
     }
-   
     #endregion Projectile methods
 }

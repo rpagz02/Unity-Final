@@ -36,12 +36,30 @@ public class SMG : Weapon
                 }
                 else
                     return;
-
             }
         }
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge"))
         {
             GetComponent<Animator>().SetBool("isReloading", false);
+        }
+    }
+
+    protected override void AttackHandler()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("Automatic Fire Called");
+            if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
+                           !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
+                           !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+            {
+                m_Timer += Time.deltaTime;
+                if (m_Timer > 0.1f)
+                {
+                    FireBullet();
+                    m_Timer = 0;
+                }
+            }
         }
     }
 }
