@@ -38,27 +38,15 @@ public abstract class Weapon : MonoBehaviour
     public GameObject m_shotPoint;
     public GameObject m_projectile;
     public GameObject VFX;
-    private AudioSource SFX;
+    protected private AudioSource SFX;
+    public AudioClip reloadSFX;
+    public AudioClip shotSFX;
     #endregion Base Weapon Variables
 
-    public Weapon()
-    {
-        m_Timer = 0;
-        isReloading = false;
-        m_clipSize = 0;
-        m_curClipAmmo = 0;
-        m_ammoPool = 0;
-        m_bulletDmg = 0;
-        m_bulletRange = 0;
-        m_bulletSpeed = 0;
-        m_shotRecoil = 0;
-        m_rateOfFire = 0;
-     // m_Automatic = false;
-        Debug.Log("Base Weapon Constructor Called");
-    }
 
     private void Start()
     {
+
         // toggled used for ADS method
         toggle = false;
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -111,7 +99,8 @@ public abstract class Weapon : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("Shot");
         VFX.GetComponent<ParticleSystem>().Play();
-        SFX.Play();
+        SFX.pitch = Random.Range(0.8f, 1f);
+        SFX.PlayOneShot(shotSFX, 0.5f);
 
         Vector3 direction = m_shotPoint.transform.position + Random.insideUnitSphere * 0.1f;
         GameObject bullet = Instantiate(m_projectile, direction, m_shotPoint.transform.rotation);
@@ -135,7 +124,8 @@ public abstract class Weapon : MonoBehaviour
                         Debug.Log("Semi-Auto fire called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
-                                !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+
                             FireBullet();
                     }
                 }
@@ -144,19 +134,22 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    Debug.Log("Automatic Fire Called");
-                    if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
+                    if (m_curClipAmmo > 0)
+                    {
+                        Debug.Log("Automatic Fire Called");
+                        if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
-                    {
-                        m_Timer += Time.deltaTime;
-                        if (m_Timer > 0.05f)
                         {
-                            FireBullet();
-                            m_Timer = 0;
+                            m_Timer += Time.deltaTime;
+                            if (m_Timer > 0.1f)
+                            {
+                                FireBullet();
+                                m_Timer = 0;
+                            }
                         }
                     }
-                    }
+                }
             }
         }
      

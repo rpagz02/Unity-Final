@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+
+
 public class FPS_MouseLook : MonoBehaviour
 {
     public float XSensitivity = 2f;

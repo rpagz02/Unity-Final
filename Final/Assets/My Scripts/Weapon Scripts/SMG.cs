@@ -26,6 +26,7 @@ public class SMG : Weapon
     {
         if (Input.GetKeyDown("r") && m_curClipAmmo < m_clipSize)
         {
+            SFX.PlayOneShot(reloadSFX);
             GetComponent<Animator>().SetBool("isReloading", true);
             for (int i = m_curClipAmmo; i < m_clipSize; i++)
             {
@@ -44,22 +45,4 @@ public class SMG : Weapon
         }
     }
 
-    protected override void AttackHandler()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            Debug.Log("Automatic Fire Called");
-            if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
-                           !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
-                           !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
-            {
-                m_Timer += Time.deltaTime;
-                if (m_Timer > 0.1f)
-                {
-                    FireBullet();
-                    m_Timer = 0;
-                }
-            }
-        }
-    }
 }

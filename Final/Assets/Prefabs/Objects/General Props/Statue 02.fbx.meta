@@ -1,0 +1,639 @@
+fileFormatVersion: 2
+guid: e94b348c167476a4fbf9ac0589ec09a3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cos100_low
+    100002: Cos100_low 1
+    100004: Cos101_low
+    100006: Cos102_low
+    100008: Cos102_low 1
+    100010: Cos103_low
+    100012: Cos103_low 1
+    100014: Cos104_low
+    100016: Cos104_low 1
+    100018: Cos105_low
+    100020: Cos105_low 1
+    100022: Cos52_low
+    100024: Cos52_low 1
+    100026: Cos53_low
+    100028: Cos54_low
+    100030: Cos55_low
+    100032: Cos56_low
+    100034: Cos56_low 1
+    100036: Cos57_low
+    100038: Cos57_low 1
+    100040: Cos58_low
+    100042: Cos58_low 1
+    100044: Cos59_low
+    100046: Cos59_low 1
+    100048: Cos60_low
+    100050: Cos61_low
+    100052: Cos61_low 1
+    100054: Cos62_low
+    100056: Cos62_low 1
+    100058: Cos63_low
+    100060: Cos64_low
+    100062: Cos64_low 1
+    100064: Cos65_low
+    100066: Cos65_low 1
+    100068: Cos66_low
+    100070: Cos66_low 1
+    100072: Cos67_low
+    100074: Cos67_low 1
+    100076: Cos68_low
+    100078: Cos69_low
+    100080: Cos69_low 1
+    100082: Cos70_low
+    100084: Cos70_low 1
+    100086: Cos71_low
+    100088: Cos71_low 1
+    100090: Cos72_low
+    100092: Cos72_low 1
+    100094: Cos73_low
+    100096: Cos73_low 1
+    100098: Cos73_low1
+    100100: Cos73_low1 1
+    100102: Cos74_low
+    100104: Cos74_low 1
+    100106: Cos75_low
+    100108: Cos76_low
+    100110: Cos76_low 1
+    100112: Cos77_low
+    100114: Cos77_low 1
+    100116: Cos78_low
+    100118: Cos78_low 1
+    100120: Cos79_low
+    100122: Cos79_low 1
+    100124: Cos80_low
+    100126: Cos81_low
+    100128: Cos81_low 1
+    100130: Cos82_low
+    100132: Cos82_low 1
+    100134: Cos83_low
+    100136: Cos83_low 1
+    100138: Cos84_low
+    100140: Cos84_low 1
+    100142: Cos85_low
+    100144: Cos86_low
+    100146: Cos86_low 1
+    100148: Cos87_low
+    100150: Cos87_low 1
+    100152: Cos88_low
+    100154: Cos88_low 1
+    100156: Cos89_low
+    100158: Cos90_low
+    100160: Cos90_low 1
+    100162: Cos91_low
+    100164: Cos91_low 1
+    100166: Cos92_low
+    100168: Cos92_low 1
+    100170: Cos93_low
+    100172: Cos93_low 1
+    100174: Cos94_low
+    100176: Cos94_low 1
+    100178: Cos95_low
+    100180: Cos95_low 1
+    100182: Cos96_low
+    100184: Cos96_low 1
+    100186: Cos96_low1
+    100188: Cos96_low1 1
+    100190: Cos97_low
+    100192: Cos97_low 1
+    100194: Cos98_low
+    100196: Cos98_low 1
+    100198: Cos99_low
+    100200: L
+    100202: L1
+    100204: slay4_low
+    100206: slay4_low 1
+    100208: //RootNode
+    100210: taring:taring_low
+    100212: taring:taring_low1
+    100214: taring_low
+    100216: taring_low1
+    400000: Cos100_low
+    400002: Cos100_low 1
+    400004: Cos101_low
+    400006: Cos102_low
+    400008: Cos102_low 1
+    400010: Cos103_low
+    400012: Cos103_low 1
+    400014: Cos104_low
+    400016: Cos104_low 1
+    400018: Cos105_low
+    400020: Cos105_low 1
+    400022: Cos52_low
+    400024: Cos52_low 1
+    400026: Cos53_low
+    400028: Cos54_low
+    400030: Cos55_low
+    400032: Cos56_low
+    400034: Cos56_low 1
+    400036: Cos57_low
+    400038: Cos57_low 1
+    400040: Cos58_low
+    400042: Cos58_low 1
+    400044: Cos59_low
+    400046: Cos59_low 1
+    400048: Cos60_low
+    400050: Cos61_low
+    400052: Cos61_low 1
+    400054: Cos62_low
+    400056: Cos62_low 1
+    400058: Cos63_low
+    400060: Cos64_low
+    400062: Cos64_low 1
+    400064: Cos65_low
+    400066: Cos65_low 1
+    400068: Cos66_low
+    400070: Cos66_low 1
+    400072: Cos67_low
+    400074: Cos67_low 1
+    400076: Cos68_low
+    400078: Cos69_low
+    400080: Cos69_low 1
+    400082: Cos70_low
+    400084: Cos70_low 1
+    400086: Cos71_low
+    400088: Cos71_low 1
+    400090: Cos72_low
+    400092: Cos72_low 1
+    400094: Cos73_low
+    400096: Cos73_low 1
+    400098: Cos73_low1
+    400100: Cos73_low1 1
+    400102: Cos74_low
+    400104: Cos74_low 1
+    400106: Cos75_low
+    400108: Cos76_low
+    400110: Cos76_low 1
+    400112: Cos77_low
+    400114: Cos77_low 1
+    400116: Cos78_low
+    400118: Cos78_low 1
+    400120: Cos79_low
+    400122: Cos79_low 1
+    400124: Cos80_low
+    400126: Cos81_low
+    400128: Cos81_low 1
+    400130: Cos82_low
+    400132: Cos82_low 1
+    400134: Cos83_low
+    400136: Cos83_low 1
+    400138: Cos84_low
+    400140: Cos84_low 1
+    400142: Cos85_low
+    400144: Cos86_low
+    400146: Cos86_low 1
+    400148: Cos87_low
+    400150: Cos87_low 1
+    400152: Cos88_low
+    400154: Cos88_low 1
+    400156: Cos89_low
+    400158: Cos90_low
+    400160: Cos90_low 1
+    400162: Cos91_low
+    400164: Cos91_low 1
+    400166: Cos92_low
+    400168: Cos92_low 1
+    400170: Cos93_low
+    400172: Cos93_low 1
+    400174: Cos94_low
+    400176: Cos94_low 1
+    400178: Cos95_low
+    400180: Cos95_low 1
+    400182: Cos96_low
+    400184: Cos96_low 1
+    400186: Cos96_low1
+    400188: Cos96_low1 1
+    400190: Cos97_low
+    400192: Cos97_low 1
+    400194: Cos98_low
+    400196: Cos98_low 1
+    400198: Cos99_low
+    400200: L
+    400202: L1
+    400204: slay4_low
+    400206: slay4_low 1
+    400208: //RootNode
+    400210: taring:taring_low
+    400212: taring:taring_low1
+    400214: taring_low
+    400216: taring_low1
+    2100000: matB
+    2100002: matA
+    2300000: Cos100_low
+    2300002: Cos100_low 1
+    2300004: Cos101_low
+    2300006: Cos102_low
+    2300008: Cos102_low 1
+    2300010: Cos103_low
+    2300012: Cos103_low 1
+    2300014: Cos104_low
+    2300016: Cos104_low 1
+    2300018: Cos105_low
+    2300020: Cos105_low 1
+    2300022: Cos52_low
+    2300024: Cos52_low 1
+    2300026: Cos53_low
+    2300028: Cos54_low
+    2300030: Cos55_low
+    2300032: Cos56_low
+    2300034: Cos56_low 1
+    2300036: Cos57_low
+    2300038: Cos57_low 1
+    2300040: Cos58_low
+    2300042: Cos58_low 1
+    2300044: Cos59_low
+    2300046: Cos59_low 1
+    2300048: Cos60_low
+    2300050: Cos61_low
+    2300052: Cos61_low 1
+    2300054: Cos62_low
+    2300056: Cos62_low 1
+    2300058: Cos63_low
+    2300060: Cos64_low
+    2300062: Cos64_low 1
+    2300064: Cos65_low
+    2300066: Cos65_low 1
+    2300068: Cos66_low
+    2300070: Cos66_low 1
+    2300072: Cos67_low
+    2300074: Cos67_low 1
+    2300076: Cos68_low
+    2300078: Cos69_low
+    2300080: Cos69_low 1
+    2300082: Cos70_low
+    2300084: Cos70_low 1
+    2300086: Cos71_low
+    2300088: Cos71_low 1
+    2300090: Cos72_low
+    2300092: Cos72_low 1
+    2300094: Cos73_low
+    2300096: Cos73_low 1
+    2300098: Cos73_low1
+    2300100: Cos73_low1 1
+    2300102: Cos74_low
+    2300104: Cos74_low 1
+    2300106: Cos75_low
+    2300108: Cos76_low
+    2300110: Cos76_low 1
+    2300112: Cos77_low
+    2300114: Cos77_low 1
+    2300116: Cos78_low
+    2300118: Cos78_low 1
+    2300120: Cos79_low
+    2300122: Cos79_low 1
+    2300124: Cos80_low
+    2300126: Cos81_low
+    2300128: Cos81_low 1
+    2300130: Cos82_low
+    2300132: Cos82_low 1
+    2300134: Cos83_low
+    2300136: Cos83_low 1
+    2300138: Cos84_low
+    2300140: Cos84_low 1
+    2300142: Cos85_low
+    2300144: Cos86_low
+    2300146: Cos86_low 1
+    2300148: Cos87_low
+    2300150: Cos87_low 1
+    2300152: Cos88_low
+    2300154: Cos88_low 1
+    2300156: Cos89_low
+    2300158: Cos90_low
+    2300160: Cos90_low 1
+    2300162: Cos91_low
+    2300164: Cos91_low 1
+    2300166: Cos92_low
+    2300168: Cos92_low 1
+    2300170: Cos93_low
+    2300172: Cos93_low 1
+    2300174: Cos94_low
+    2300176: Cos94_low 1
+    2300178: Cos95_low
+    2300180: Cos95_low 1
+    2300182: Cos96_low
+    2300184: Cos96_low 1
+    2300186: Cos96_low1
+    2300188: Cos96_low1 1
+    2300190: Cos97_low
+    2300192: Cos97_low 1
+    2300194: Cos98_low
+    2300196: Cos98_low 1
+    2300198: Cos99_low
+    2300200: slay4_low
+    2300202: slay4_low 1
+    2300204: taring:taring_low
+    2300206: taring:taring_low1
+    2300208: taring_low
+    2300210: taring_low1
+    3300000: Cos100_low
+    3300002: Cos100_low 1
+    3300004: Cos101_low
+    3300006: Cos102_low
+    3300008: Cos102_low 1
+    3300010: Cos103_low
+    3300012: Cos103_low 1
+    3300014: Cos104_low
+    3300016: Cos104_low 1
+    3300018: Cos105_low
+    3300020: Cos105_low 1
+    3300022: Cos52_low
+    3300024: Cos52_low 1
+    3300026: Cos53_low
+    3300028: Cos54_low
+    3300030: Cos55_low
+    3300032: Cos56_low
+    3300034: Cos56_low 1
+    3300036: Cos57_low
+    3300038: Cos57_low 1
+    3300040: Cos58_low
+    3300042: Cos58_low 1
+    3300044: Cos59_low
+    3300046: Cos59_low 1
+    3300048: Cos60_low
+    3300050: Cos61_low
+    3300052: Cos61_low 1
+    3300054: Cos62_low
+    3300056: Cos62_low 1
+    3300058: Cos63_low
+    3300060: Cos64_low
+    3300062: Cos64_low 1
+    3300064: Cos65_low
+    3300066: Cos65_low 1
+    3300068: Cos66_low
+    3300070: Cos66_low 1
+    3300072: Cos67_low
+    3300074: Cos67_low 1
+    3300076: Cos68_low
+    3300078: Cos69_low
+    3300080: Cos69_low 1
+    3300082: Cos70_low
+    3300084: Cos70_low 1
+    3300086: Cos71_low
+    3300088: Cos71_low 1
+    3300090: Cos72_low
+    3300092: Cos72_low 1
+    3300094: Cos73_low
+    3300096: Cos73_low 1
+    3300098: Cos73_low1
+    3300100: Cos73_low1 1
+    3300102: Cos74_low
+    3300104: Cos74_low 1
+    3300106: Cos75_low
+    3300108: Cos76_low
+    3300110: Cos76_low 1
+    3300112: Cos77_low
+    3300114: Cos77_low 1
+    3300116: Cos78_low
+    3300118: Cos78_low 1
+    3300120: Cos79_low
+    3300122: Cos79_low 1
+    3300124: Cos80_low
+    3300126: Cos81_low
+    3300128: Cos81_low 1
+    3300130: Cos82_low
+    3300132: Cos82_low 1
+    3300134: Cos83_low
+    3300136: Cos83_low 1
+    3300138: Cos84_low
+    3300140: Cos84_low 1
+    3300142: Cos85_low
+    3300144: Cos86_low
+    3300146: Cos86_low 1
+    3300148: Cos87_low
+    3300150: Cos87_low 1
+    3300152: Cos88_low
+    3300154: Cos88_low 1
+    3300156: Cos89_low
+    3300158: Cos90_low
+    3300160: Cos90_low 1
+    3300162: Cos91_low
+    3300164: Cos91_low 1
+    3300166: Cos92_low
+    3300168: Cos92_low 1
+    3300170: Cos93_low
+    3300172: Cos93_low 1
+    3300174: Cos94_low
+    3300176: Cos94_low 1
+    3300178: Cos95_low
+    3300180: Cos95_low 1
+    3300182: Cos96_low
+    3300184: Cos96_low 1
+    3300186: Cos96_low1
+    3300188: Cos96_low1 1
+    3300190: Cos97_low
+    3300192: Cos97_low 1
+    3300194: Cos98_low
+    3300196: Cos98_low 1
+    3300198: Cos99_low
+    3300200: slay4_low
+    3300202: slay4_low 1
+    3300204: taring:taring_low
+    3300206: taring:taring_low1
+    3300208: taring_low
+    3300210: taring_low1
+    4300000: Cos54_low
+    4300002: Cos68_low
+    4300004: Cos75_low
+    4300006: Cos80_low
+    4300008: Cos60_low
+    4300010: Cos99_low
+    4300012: Cos101_low
+    4300014: Cos89_low
+    4300016: Cos85_low
+    4300018: Cos53_low
+    4300020: Cos55_low
+    4300022: Cos63_low
+    4300024: Cos52_low
+    4300026: Cos56_low
+    4300028: Cos57_low
+    4300030: Cos58_low
+    4300032: Cos59_low
+    4300034: Cos61_low
+    4300036: Cos62_low
+    4300038: Cos64_low
+    4300040: Cos65_low
+    4300042: Cos66_low
+    4300044: Cos67_low
+    4300046: Cos69_low
+    4300048: Cos70_low
+    4300050: Cos71_low
+    4300052: Cos72_low
+    4300054: Cos73_low
+    4300056: Cos74_low
+    4300058: Cos76_low
+    4300060: Cos77_low
+    4300062: Cos78_low
+    4300064: Cos79_low
+    4300066: Cos81_low
+    4300068: Cos82_low
+    4300070: Cos83_low
+    4300072: Cos84_low
+    4300074: Cos86_low
+    4300076: Cos87_low
+    4300078: Cos88_low
+    4300080: Cos90_low
+    4300082: Cos91_low
+    4300084: Cos92_low
+    4300086: Cos93_low
+    4300088: Cos94_low
+    4300090: Cos95_low
+    4300092: Cos96_low
+    4300094: Cos97_low
+    4300096: Cos98_low
+    4300098: Cos100_low
+    4300100: Cos102_low
+    4300102: Cos103_low
+    4300104: Cos104_low
+    4300106: Cos105_low
+    4300108: taring:taring_low
+    4300110: taring:taring_low1
+    4300112: Cos73_low1
+    4300114: Cos96_low1
+    4300116: slay4_low
+    4300118: Cos52_low
+    4300120: Cos56_low
+    4300122: Cos57_low
+    4300124: Cos58_low
+    4300126: Cos59_low
+    4300128: Cos61_low
+    4300130: Cos62_low
+    4300132: Cos64_low
+    4300134: Cos65_low
+    4300136: Cos66_low
+    4300138: Cos67_low
+    4300140: Cos69_low
+    4300142: Cos70_low
+    4300144: Cos71_low
+    4300146: Cos72_low
+    4300148: Cos73_low
+    4300150: Cos74_low
+    4300152: Cos76_low
+    4300154: Cos77_low
+    4300156: Cos78_low
+    4300158: Cos79_low
+    4300160: Cos81_low
+    4300162: Cos82_low
+    4300164: Cos83_low
+    4300166: Cos84_low
+    4300168: Cos86_low
+    4300170: Cos87_low
+    4300172: Cos88_low
+    4300174: Cos90_low
+    4300176: Cos91_low
+    4300178: Cos92_low
+    4300180: Cos93_low
+    4300182: Cos94_low
+    4300184: Cos95_low
+    4300186: Cos96_low
+    4300188: Cos97_low
+    4300190: Cos98_low
+    4300192: Cos100_low
+    4300194: Cos102_low
+    4300196: Cos103_low
+    4300198: Cos104_low
+    4300200: Cos105_low
+    4300202: taring_low
+    4300204: taring_low1
+    4300206: Cos73_low1
+    4300208: Cos96_low1
+    4300210: slay4_low
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matA
+    second: {fileID: 2100000, guid: b9b892f62dcde7d429f39f807e98ae11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matB
+    second: {fileID: 2100000, guid: d1a90dbf21cc5894e84245621b90ca8e, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
