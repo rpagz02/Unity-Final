@@ -13,7 +13,7 @@ public class SMG : Weapon
         m_bulletRange = 18;
         m_bulletSpeed = 120;
         m_shotRecoil = 0;
-        m_rateOfFire = 1f;
+        m_rateOfFire = 0.12f;
         m_Automatic = true;
 
         m_WeaponID = (int)Weapons.SMG;

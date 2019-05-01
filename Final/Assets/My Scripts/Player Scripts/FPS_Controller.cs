@@ -11,6 +11,9 @@ public class FPS_Controller : MonoBehaviour
     private Camera m_Camera;
     private float jumpSpeed = 8.0F;
     private float gravity = 30.0F;
+    private int standingHeight = 2, crouchingHeight = 1;
+    [SerializeField]
+    private bool crouching = false;
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
     #endregion Local Variables
@@ -40,7 +43,7 @@ public class FPS_Controller : MonoBehaviour
             moveDirection = new Vector3(horizontal, 0, vertical);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump")/* && !crouching*/)
                 moveDirection.y = jumpSpeed;
 
         }
@@ -49,20 +52,11 @@ public class FPS_Controller : MonoBehaviour
 
 
 
-        
-                                                                                                                                                                      
-        if (Input.GetKey(KeyCode.LeftShift))                   
-        {                                                       
-            speed += 1;                                        
-            if (speed > 7)                                    
-                speed = 7;
-            isSprinting = true;
-        }                                                      
-        if(Input.GetKeyUp(KeyCode.LeftShift))                  
-        {                                                        
-            speed = 4;
-            isSprinting = false;
-        }                                                      
+
+
+        SpringHandler();
+        CrouchHandler();
+
     }
 
     private void FixedUpdate()
@@ -77,5 +71,34 @@ public class FPS_Controller : MonoBehaviour
     {
         return isSprinting;
     }
+
+    void SpringHandler()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed += 1;
+            if (speed > 7)
+                speed = 7;
+            isSprinting = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 4;
+            isSprinting = false;
+        }
+    }
+
+    void CrouchHandler()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            crouching = !crouching;
+            if (crouching)
+                controller.height = 1;
+            else
+                controller.height = 2;
+        }
+    }
+
 
 }                                           

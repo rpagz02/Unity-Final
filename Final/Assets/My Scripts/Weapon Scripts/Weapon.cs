@@ -41,6 +41,7 @@ public abstract class Weapon : MonoBehaviour
     protected private AudioSource SFX;
     public AudioClip reloadSFX;
     public AudioClip shotSFX;
+    public GameObject reticle_Image;
     #endregion Base Weapon Variables
 
 
@@ -73,6 +74,7 @@ public abstract class Weapon : MonoBehaviour
     protected void ADSToggle()
     {
         this.GetComponent<Animator>().SetBool("isADS", !toggle);
+        reticle_Image.SetActive(!toggle);
         toggle = !toggle;
     }
     // Toggle ADS when Right Mouse Held
@@ -132,7 +134,19 @@ public abstract class Weapon : MonoBehaviour
             }
             else
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (m_curClipAmmo > 0)
+                    {
+                        Debug.Log("Semi-Auto fire called");
+                        if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
+                            !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+
+                            FireBullet();
+                    }
+                }
+                else if (Input.GetMouseButton(0))
                 {
                     if (m_curClipAmmo > 0)
                     {
@@ -142,7 +156,7 @@ public abstract class Weapon : MonoBehaviour
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
                         {
                             m_Timer += Time.deltaTime;
-                            if (m_Timer > 0.1f)
+                            if (m_Timer > m_rateOfFire)
                             {
                                 FireBullet();
                                 m_Timer = 0;
