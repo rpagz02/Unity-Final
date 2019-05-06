@@ -196,4 +196,9 @@ public abstract class Weapon : MonoBehaviour
         }
     }
     #endregion Projectile methods
+
+    public int GetCurrentAmmo() { return m_curClipAmmo; }
+    public int GetMaxAmmo() { return m_clipSize; }
+    public int GetAmmoPool() { return m_ammoPool; }
+
 }

@@ -5,6 +5,7 @@ using System;
 
 public class FPS_Inventory : MonoBehaviour
 {
+    [System.Serializable]
     public enum Weapons { Knife, Pistol, SMG, Shotgun, Rifle, LMG, Crossbow, GrenadeLauncher, Axe, Grenade, Flashlight };
     private enum Ammo { LightAmmo, HeavyAmmo, Shells, Bolts };
     private enum Consumables { Syringe };
@@ -60,11 +61,7 @@ public class FPS_Inventory : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// Helper Methods 

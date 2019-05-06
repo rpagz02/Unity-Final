@@ -8,7 +8,6 @@ public class FPS_Controller : MonoBehaviour
     #region Local Variables
     [SerializeField]
     private float speed;
-    private Camera m_Camera;
     private float jumpSpeed = 8.0F;
     private float gravity = 30.0F;
     private int standingHeight = 2, crouchingHeight = 1;
@@ -28,7 +27,6 @@ public class FPS_Controller : MonoBehaviour
     void Start ()
     {
         speed = 4;
-        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
     }
 	
@@ -43,7 +41,7 @@ public class FPS_Controller : MonoBehaviour
             moveDirection = new Vector3(horizontal, 0, vertical);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-            if (Input.GetButton("Jump")/* && !crouching*/)
+            if ((Input.GetButton("Jump" )) && Time.timeScale != 0 && !crouching)
                 moveDirection.y = jumpSpeed;
 
         }
@@ -74,15 +72,17 @@ public class FPS_Controller : MonoBehaviour
 
     void SpringHandler()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && Time.timeScale != 0)
         {
+            if(!crouching)
             speed += 1;
             if (speed > 7)
                 speed = 7;
             isSprinting = true;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) && Time.timeScale != 0)
         {
+            if(!crouching)
             speed = 4;
             isSprinting = false;
         }
@@ -90,7 +90,7 @@ public class FPS_Controller : MonoBehaviour
 
     void CrouchHandler()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && Time.timeScale != 0)
         {
             crouching = !crouching;
             if (crouching)

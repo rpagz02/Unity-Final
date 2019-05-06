@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour
     private float baseDamage;
     private float range_timer = 0;
     private float range = 0;
+    private float timer = 0;
+    public GameObject ImpactDecal;
+
 
     private float bulletWeight;
     Vector3 bulletDrop_Gravity = Vector3.zero;
@@ -24,12 +27,18 @@ public class Projectile : MonoBehaviour
         // Testing out the damage falloff logic here
         range_timer += Time.deltaTime;
 
-        if (range_timer <= 0.18f)
+        if (range_timer <= 0.1f)
             m_projectileDmg = baseDamage;
-        else if (range_timer <= 0.45f)
-            m_projectileDmg = baseDamage * 0.66f;
+        else if (range_timer <= 0.2f)
+            m_projectileDmg = baseDamage * 0.8f;
+        else if (range_timer <= 0.3f)
+            m_projectileDmg = baseDamage * 0.7f;
+        else if (range_timer <= 0.4f)
+            m_projectileDmg = baseDamage * 0.65f;
+        else if (range_timer <= 0.5f)
+            m_projectileDmg = baseDamage * 0.46f;
         else if (range_timer <= 0.6f)
-            m_projectileDmg = baseDamage * 0.33f;
+            m_projectileDmg = baseDamage * 0.35f;
         else if (range_timer <= 0.65f)
             m_projectileDmg = baseDamage * 0.15f;
 
@@ -40,15 +49,19 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Destroy the Bullet if it hits anything
-        // with the exception of the targets(they have special logic behind them)
+        if (collision.gameObject.layer != 8 && collision.gameObject.tag != "Player")
+        {
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rot = Quaternion.LookRotation(contact.normal);
+            Instantiate(ImpactDecal, this.transform.position, rot);
+            Destroy(this.gameObject);
 
-        if(collision.gameObject.layer != 8)
-        Destroy(this.gameObject);
+        }
     }
-
     public void setBulletDamage(float dmg) { m_projectileDmg = dmg; baseDamage = dmg; }
     public float getBulletDamage() { return m_projectileDmg; }
     public float getBulletRange() { return range; }
     public void setBulletRange(float _range) { range = _range; }
+
+
 }

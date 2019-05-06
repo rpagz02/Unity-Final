@@ -161,4 +161,14 @@ public class FPS_WeaponHandling : MonoBehaviour
         DeactivateArms();
         WeaponInventory[weaponIndex].SetActive(true);
     }
+
+    public int GetActiveWeaponIndex()
+    {
+        for(int i = 0; i < WeaponInventory.Length; i++)
+        {
+            if (WeaponInventory[i].activeInHierarchy == true)
+                return i;
+        }
+        return 0;
+    }
 }

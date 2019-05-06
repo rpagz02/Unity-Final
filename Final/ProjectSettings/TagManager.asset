@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Arms_Weapons
   layers:
   - Default
   - TransparentFX
@@ -16,6 +17,7 @@ TagManager:
   - Projectile
   - Minimap
   - playerLight
+  - Enemy Projectile
   - 
   - 
   - 
@@ -23,9 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Knife
+  - Player
   - 
   - 
   - 
