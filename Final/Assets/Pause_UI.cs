@@ -7,13 +7,26 @@ using UnityEngine.SceneManagement;
 
 public class Pause_UI : MonoBehaviour
 {
+
+    [Header("[0] should be HUD, [1] should be Menu")]
     public GameObject[] Canvases;
-    // [0] should always remain as the HUD Canvas
-    // [1] should always remain as the Menu Canvas
+    [Header("The Check Windows")]
+    public GameObject CheckWindow_Restart;
+    public GameObject CheckWindow_ExitMain;
+    public GameObject CheckWindow_ExitDesktop;
+    public GameObject[] SplashScreenObjects;
     [SerializeField]
     private bool Paused = false;
-    public GameObject[] SplashScreenObjects;
     private GameObject Player;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /// The Below Variables are used to gather temporary data from the Player to                     //
+    /// pass to the other UI menus. (Current health this round, Current  armor this round.)          //
+    ///  ----- The max health and other variables are more permenant and can only be changed by      //
+    ///  ----- restarting the entire game. therefore can be stored and retrieved through playerPrefs //
+    private float temp_PlayerHealth = 0;                                                             //
+    private float temp_PlayerArmor = 0;                                                              //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     private void Start()
     {
@@ -47,13 +60,11 @@ public class Pause_UI : MonoBehaviour
 
         if (Paused)
         {
+            RefreshPlayerStats();
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            if (Canvases[0].activeInHierarchy && !Canvases[1].activeInHierarchy)
-            {
-                Canvases[0].SetActive(false);
-                Canvases[1].SetActive(true);
-            }
+            Cursor.lockState = CursorLockMode.None;            
+            Canvases[0].SetActive(false);
+            Canvases[1].SetActive(true);           
             Time.timeScale = 0;
             Player.SetActive(false);
         }
@@ -67,38 +78,28 @@ public class Pause_UI : MonoBehaviour
                 Canvases[1].SetActive(false);
             }
             Time.timeScale = 1;
+            Cursor.visible = false;
             Player.SetActive(true);
 
         }
     }
 
-    // ON CLICK METHODS
-
+    #region OnClick Methods
     public void OnResume()
     {
         Paused = false;
     }
-
     public void OnRestart()
     {
-        //SceneManager.LoadScene(1);
-        SplashScreenObjects[0].SetActive(false); // Everything else
-        SplashScreenObjects[1].SetActive(true); // Loading Canvas
-        SplashScreenObjects[2].SetActive(true); // Text
-        StartCoroutine(LoadNewScene(1));
+        CheckWindow_Restart.SetActive(true);
     }
-
     public void OnMainMenu()
     {
-        //SceneManager.LoadScene(0);
-        SplashScreenObjects[0].SetActive(false);
-        SplashScreenObjects[1].SetActive(true);
-        SplashScreenObjects[2].SetActive(true);
-        StartCoroutine(LoadNewScene(0));
+        CheckWindow_ExitMain.SetActive(true);
     }
     public void OnDesktop()
     {
-        Application.Quit();
+        CheckWindow_ExitDesktop.SetActive(true);
     }
 
     IEnumerator LoadNewScene(int sceneIndex)
@@ -112,9 +113,28 @@ public class Pause_UI : MonoBehaviour
             SplashScreenObjects[2].GetComponent<Text>().text = async.progress.ToString("F1");
             yield return null;
         }
-
-
     }
+
+    #endregion OnClickMethods
+
+    #region Data Transfer between UI methods
+    void RefreshPlayerStats()
+    {
+        if (Player)
+        {
+            temp_PlayerArmor = Player.GetComponent<FPS_Player>().GetArmor();
+            temp_PlayerHealth = Player.GetComponent<FPS_Player>().GetHealth();
+        }
+    }
+    public float GetPlayerCurHealth()
+    {
+        return temp_PlayerHealth;
+    }
+    public float GetPlayerCurArmor()
+    {
+        return temp_PlayerArmor;
+    }
+    #endregion Data Transfer between UI methods
 }
 
 

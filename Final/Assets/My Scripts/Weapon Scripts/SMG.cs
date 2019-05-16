@@ -4,36 +4,38 @@ using UnityEngine;
 
 public class SMG : Weapon
 {
-    public SMG()
+
+    private void Start()
     {
-        m_clipSize = 30;
-        m_ammoPool = 0;
+        gunAmmo.m_clipSize = 30;
+        gunAmmo.m_ammoPool = 0;
 
-        m_bulletDmg = 3.5f;
-        m_bulletRange = 18;
-        m_bulletSpeed = 120;
-        m_shotRecoil = 0;
-        m_rateOfFire = 0.12f;
-        m_Automatic = true;
+        gunBullet.m_bulletDmg = 3.5f;
+        gunBullet.m_bulletRange = 18;
+        gunBullet.m_bulletSpeed = 120;
+        gunBullet.m_shotRecoil = 0;
+        gunBullet.m_rateOfFire = 0.12f;
+        gunBullet.m_Automatic = true;
 
-        m_WeaponID = (int)Weapons.SMG;
-        Debug.Log("SMG Constructor Called");
+        gunAmmo.m_WeaponID = (int)Weapons.SMG;
 
+        toggle = false;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        SFX = GetComponent<AudioSource>();
     }
-
 
     protected override void ReloadHandler()
     {
-        if (Input.GetKeyDown("r") && m_curClipAmmo < m_clipSize)
+        if (Input.GetKeyDown("r") && gunAmmo.m_curClipAmmo < gunAmmo.m_clipSize)
         {
-            SFX.PlayOneShot(reloadSFX);
+            SFX.PlayOneShot(gunFX.reloadSFX);
             GetComponent<Animator>().SetBool("isReloading", true);
-            for (int i = m_curClipAmmo; i < m_clipSize; i++)
+            for (int i = gunAmmo.m_curClipAmmo; i < gunAmmo.m_clipSize; i++)
             {
-                if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+                if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(gunAmmo.m_WeaponID) > 0)
                 {
-                    m_curClipAmmo++;
-                    Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(m_WeaponID, "sub", 1);
+                    gunAmmo.m_curClipAmmo++;
+                    Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(gunAmmo.m_WeaponID, "sub", 1);
                 }
                 else
                     return;

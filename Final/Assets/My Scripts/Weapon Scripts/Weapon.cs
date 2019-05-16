@@ -2,61 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Weapon_Ammo
+{
+    [Header("The unique Weapon ID")]
+    public int m_WeaponID;
+    [Space(5)]
+    [Header("Ammunition Variables")]
+    [Tooltip("How many bullets this weapon can hold")]
+    public int m_clipSize;
+    [Tooltip("How many bullets are currently in the clip")]
+    public int m_curClipAmmo;
+    [Tooltip("Total ammount of ammo for this weapon in the inventory")]
+    public int m_ammoPool;
+}
+
+[System.Serializable]
+public class Weapon_Projectile
+{
+    [Header("Bullet Variables")]
+    [Tooltip("How much damage the projectile does")]
+    public float m_bulletDmg;
+    [Tooltip("Velocity of the bullet")]
+    public float m_bulletSpeed;
+    [Tooltip("The Spread of the weapons recoil")]
+    public float m_shotRecoil;
+    [Tooltip("How far the bullet can go")]
+    public float m_bulletRange;
+    [Tooltip("How often the player can fire a bullet")]
+    public float m_rateOfFire;
+    [Tooltip("Is the weapon Automatic or SemiAutomatic?")]
+    public bool m_Automatic;
+    [Space(5)]
+    [Header("Drag and Drop Objects")]
+    public GameObject m_shotPoint;
+    public GameObject m_projectile;
+}
+
+[System.Serializable]
+public class Weapon_FX
+{
+    [Header("Drag and Drop SVFX")]
+    public GameObject VFX;
+    public AudioClip reloadSFX;
+    public AudioClip shotSFX;
+    public GameObject reticle_Image;
+}
+
 public abstract class Weapon : MonoBehaviour
 {
     public enum Weapons { Knife, Pistol, SMG, Shotgun, Rifle, LMG, Crossbow, GrenadeLauncher, Axe, Grenade, Flashlight };
-
-    #region Base Weapon Variables
-    //Unique Weapon ID
-    [SerializeField]
-    protected int m_WeaponID;
-    // Ammunition Variables
-    [SerializeField]
-    protected int m_clipSize;
-    [SerializeField]
-    protected int m_curClipAmmo;
-    [SerializeField]
-    protected int m_ammoPool;
-    // Projectile Variables
-    [SerializeField]
-    protected float m_bulletDmg;
-    [SerializeField]
-    protected float m_bulletSpeed;
-    [SerializeField]
-    protected float m_shotRecoil;
-    [SerializeField]
-    protected float m_bulletRange;
-    [SerializeField]
-    protected float m_rateOfFire;
-    [SerializeField]
-    protected bool m_Automatic;
-
+    // Local Private Variables
     protected private bool toggle;
     protected private GameObject Player;
     protected private bool isReloading;
     protected private float m_Timer;
-    public GameObject m_shotPoint;
-    public GameObject m_projectile;
-    public GameObject VFX;
     protected private AudioSource SFX;
-    public AudioClip reloadSFX;
-    public AudioClip shotSFX;
-    public GameObject reticle_Image;
-    #endregion Base Weapon Variables
 
-
-    private void Start()
-    {
-
-        // toggled used for ADS method
-        toggle = false;
-        Player = GameObject.FindGameObjectWithTag("Player");
-        SFX = GetComponent<AudioSource>();
-    }
+    public Weapon_Ammo gunAmmo;
+    public Weapon_Projectile gunBullet;
+    public Weapon_FX gunFX;
 
     protected virtual void Update()
     {
-        m_ammoPool = Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID);
+        gunAmmo.m_ammoPool = Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(gunAmmo.m_WeaponID);
 
         ADS();
         WeaponSprintAnim();
@@ -74,7 +83,7 @@ public abstract class Weapon : MonoBehaviour
     protected void ADSToggle()
     {
         this.GetComponent<Animator>().SetBool("isADS", !toggle);
-        reticle_Image.SetActive(!toggle);
+        gunFX.reticle_Image.SetActive(!toggle);
         toggle = !toggle;
     }
     // Toggle ADS when Right Mouse Held
@@ -100,28 +109,28 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void FireBullet()
     {
         GetComponent<Animator>().SetTrigger("Shot");
-        VFX.GetComponent<ParticleSystem>().Play();
+        gunFX.VFX.GetComponent<ParticleSystem>().Play();
         SFX.pitch = Random.Range(0.8f, 1f);
-        SFX.PlayOneShot(shotSFX, 0.5f);
+        SFX.PlayOneShot(gunFX.shotSFX, 0.5f);
 
-        Vector3 direction = m_shotPoint.transform.position + Random.insideUnitSphere * 0.1f;
-        GameObject bullet = Instantiate(m_projectile, direction, m_shotPoint.transform.rotation);
-        bullet.GetComponent<Projectile>().setBulletDamage(m_bulletDmg);
-        bullet.GetComponent<Projectile>().setBulletRange(m_bulletRange);
-        bullet.GetComponent<Rigidbody>().velocity = transform.forward * m_bulletSpeed;
+        Vector3 direction = gunBullet.m_shotPoint.transform.position + Random.insideUnitSphere * 0.1f;
+        GameObject bullet = Instantiate(gunBullet.m_projectile, direction, gunBullet.m_shotPoint.transform.rotation);
+        bullet.GetComponent<Projectile>().setBulletDamage(gunBullet.m_bulletDmg);
+        bullet.GetComponent<Projectile>().setBulletRange(gunBullet.m_bulletRange);
+        bullet.GetComponent<Rigidbody>().velocity = transform.forward * gunBullet.m_bulletSpeed;
 
-        m_curClipAmmo--;
+        gunAmmo.m_curClipAmmo--;
     }
 
     protected virtual void AttackHandler()
     {
-        if (m_curClipAmmo > 0)
+        if (gunAmmo.m_curClipAmmo > 0)
         {
-            if (!m_Automatic)
+            if (!gunBullet.m_Automatic)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (m_curClipAmmo > 0)
+                    if (gunAmmo.m_curClipAmmo > 0)
                     {
                         Debug.Log("Semi-Auto fire called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
@@ -136,7 +145,7 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (m_curClipAmmo > 0)
+                    if (gunAmmo.m_curClipAmmo > 0)
                     {
                         Debug.Log("Semi-Auto fire called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
@@ -148,7 +157,7 @@ public abstract class Weapon : MonoBehaviour
                 }
                 else if (Input.GetMouseButton(0))
                 {
-                    if (m_curClipAmmo > 0)
+                    if (gunAmmo.m_curClipAmmo > 0)
                     {
                         Debug.Log("Automatic Fire Called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
@@ -156,7 +165,7 @@ public abstract class Weapon : MonoBehaviour
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
                         {
                             m_Timer += Time.deltaTime;
-                            if (m_Timer > m_rateOfFire)
+                            if (m_Timer > gunBullet.m_rateOfFire)
                             {
                                 FireBullet();
                                 m_Timer = 0;
@@ -172,17 +181,17 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void ReloadHandler()
     {
 
-        if (Input.GetKeyDown("r") && m_curClipAmmo < m_clipSize)
+        if (Input.GetKeyDown("r") && gunAmmo.m_curClipAmmo < gunAmmo.m_clipSize)
         {
-            if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+            if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(gunAmmo.m_WeaponID) > 0)
             {
                 GetComponent<Animator>().SetBool("isReloading", true);
-                for (int i = m_curClipAmmo; i < m_clipSize; i++)
+                for (int i = gunAmmo.m_curClipAmmo; i < gunAmmo.m_clipSize; i++)
                 {
-                    if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+                    if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(gunAmmo.m_WeaponID) > 0)
                     {
-                        m_curClipAmmo++;
-                        Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(m_WeaponID, "sub", 1);
+                        gunAmmo.m_curClipAmmo++;
+                        Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(gunAmmo.m_WeaponID, "sub", 1);
                     }
                     else
                         return;
@@ -197,8 +206,8 @@ public abstract class Weapon : MonoBehaviour
     }
     #endregion Projectile methods
 
-    public int GetCurrentAmmo() { return m_curClipAmmo; }
-    public int GetMaxAmmo() { return m_clipSize; }
-    public int GetAmmoPool() { return m_ammoPool; }
+    public int GetCurrentAmmo() { return gunAmmo.m_curClipAmmo; }
+    public int GetMaxAmmo() { return gunAmmo.m_clipSize; }
+    public int GetAmmoPool() { return gunAmmo.m_ammoPool; }
 
 }

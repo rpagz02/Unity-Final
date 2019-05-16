@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class LMG : Weapon
 {
-    public LMG()
+    private void Start()
     {
-        m_clipSize = 30;
-        m_ammoPool = 0;
+        gunAmmo.m_clipSize = 30;
+        gunAmmo.m_ammoPool = 0;
 
-        m_bulletDmg = 3.5f;
-        m_bulletRange = 18;
-        m_bulletSpeed = 120;
-        m_shotRecoil = 0;
-        m_rateOfFire = 1f;
-        m_Automatic = true;
+        gunBullet.m_bulletDmg = 3.5f;
+        gunBullet.m_bulletRange = 18;
+        gunBullet.m_bulletSpeed = 120;
+        gunBullet.m_shotRecoil = 0;
+        gunBullet.m_rateOfFire = 1f;
+        gunBullet.m_Automatic = true;
 
-        m_WeaponID = (int)Weapons.LMG;
+        gunAmmo.m_WeaponID = (int)Weapons.LMG;
 
-        Debug.Log("LMG Constructor Called");
+        toggle = false;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        SFX = GetComponent<AudioSource>();
     }
 }

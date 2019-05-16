@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Crossbow : Weapon
 {
-    public Crossbow()
+
+    private void Start()
     {
-        m_clipSize = 6;
-        m_ammoPool = 0;
+        gunAmmo.m_clipSize = 6;
+        gunAmmo.m_ammoPool = 0;
 
-        m_bulletDmg = 55.5f;
-        m_bulletRange = 40f;
-        m_bulletSpeed = 150f;
-        m_shotRecoil = 0;
-        m_rateOfFire = 0.75f;
-        m_Automatic = false;
+        gunBullet.m_bulletDmg = 55.5f;
+        gunBullet.m_bulletRange = 40f;
+        gunBullet.m_bulletSpeed = 150f;
+        gunBullet.m_shotRecoil = 0;
+        gunBullet.m_rateOfFire = 0.75f;
+        gunBullet.m_Automatic = false;
 
-        m_WeaponID = (int)Weapons.Crossbow;
+        gunAmmo.m_WeaponID = (int)Weapons.Crossbow;
 
-        Debug.Log("Pistol Constructor Called");
+        toggle = false;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        SFX = GetComponent<AudioSource>();
     }
-
 }

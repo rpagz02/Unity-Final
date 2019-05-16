@@ -17,6 +17,10 @@ public class FPS_Player : MonoBehaviour
     [SerializeField]
     private float m_Health_Max;
     [SerializeField]
+    private float m_Armor_Current;
+    [SerializeField]
+    private float m_Armor_Max;
+    [SerializeField]
     private bool isDead = false;
     [SerializeField]
     private float m_Level;
@@ -39,6 +43,8 @@ public class FPS_Player : MonoBehaviour
     {
         m_Health_Current = 100;
         m_Health_Max = 100;
+        m_Armor_Current = 25;
+        m_Armor_Max = 25;
         m_XP_Current = 0;
         m_XP_Max = 500;
         m_Level = 0;
@@ -75,7 +81,8 @@ public class FPS_Player : MonoBehaviour
 
         if(isDead)
         {
-            SceneManager.LoadSceneAsync(0);
+            // Open Game Menu and disable RESUME button
+            //SceneManager.LoadSceneAsync(0);
         }
     }
     private void ArmorMonitor()
@@ -102,5 +109,13 @@ public class FPS_Player : MonoBehaviour
     public float GetMaxHealth()
     {
         return m_Health_Max;
+    }
+    public float GetArmor()
+    {
+        return m_Armor_Current;
+    }
+    public float GetArmorMax()
+    {
+        return m_Armor_Max;
     }
 }

@@ -5,36 +5,38 @@ using UnityEngine;
 public class Pistol : Weapon
 {
 
-    public Pistol()
+    private void Start()
     {
-        m_clipSize = 8;
-        this.m_ammoPool = 0;
-        this.m_bulletDmg = 25.5f;
-        this.m_bulletRange = 2f;
-        this.m_bulletSpeed = 100f;
-        this.m_shotRecoil = 0;
-        this.m_rateOfFire = 0.2f;
-        this.m_Automatic = false;
+        gunAmmo.m_clipSize = 8;
+        gunAmmo.m_ammoPool = 0;
+        gunBullet.m_bulletDmg = 25.5f;
+        gunBullet.m_bulletRange = 2f;
+        gunBullet.m_bulletSpeed = 100f;
+        gunBullet.m_shotRecoil = 0;
+        gunBullet.m_rateOfFire = 0.2f;
+        gunBullet.m_Automatic = false;
 
-        this.m_WeaponID = (int)Weapons.Pistol;
-        
-        Debug.Log("Pistol Constructor Called");
+        gunAmmo.m_WeaponID = (int)Weapons.Pistol;
+
+        toggle = false;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        SFX = GetComponent<AudioSource>();
     }
 
     protected override void ReloadHandler()
     {
         
-        if (Input.GetKeyDown("r") && m_curClipAmmo < m_clipSize)
+        if (Input.GetKeyDown("r") && gunAmmo.m_curClipAmmo < gunAmmo.m_clipSize)
         {
-            SFX.PlayOneShot(reloadSFX);
+            SFX.PlayOneShot(gunFX.reloadSFX);
 
             GetComponent<Animator>().SetBool("isReloading", true);
-            for (int i = m_curClipAmmo; i < m_clipSize; i++)
+            for (int i = gunAmmo.m_curClipAmmo; i < gunAmmo.m_clipSize; i++)
             {
-                if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(m_WeaponID) > 0)
+                if (Player.GetComponent<FPS_Inventory>().GetWeaponAmmo(gunAmmo.m_WeaponID) > 0)
                 {
-                    m_curClipAmmo++;
-                    Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(m_WeaponID, "sub", 1);
+                    gunAmmo.m_curClipAmmo++;
+                    Player.GetComponent<FPS_Inventory>().ModifyWeaponAmmo(gunAmmo.m_WeaponID, "sub", 1);
                 }
                 else
                     return;
