@@ -228,3 +228,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImpactDecal: {fileID: 2875683345752512498, guid: 0a712ea51ff6cf64bb06e2ddf597400a,
     type: 3}
+  BloodSpray: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}

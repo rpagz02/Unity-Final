@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     private float range = 0;
     private float timer = 0;
     public GameObject ImpactDecal;
+    public GameObject BloodSpray;
 
 
     private float bulletWeight;
@@ -49,14 +50,21 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer != 8 && collision.gameObject.tag != "Player")
+        if (collision.gameObject.layer == 12)
+        {
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rot = Quaternion.LookRotation(contact.normal);
+            Instantiate(BloodSpray, this.transform.position, rot);
+            Destroy(this.gameObject);
+        }
+       else if (collision.gameObject.layer != 8 && collision.gameObject.tag != "Player")
         {
             ContactPoint contact = collision.contacts[0];
             Quaternion rot = Quaternion.LookRotation(contact.normal);
             Instantiate(ImpactDecal, this.transform.position, rot);
             Destroy(this.gameObject);
-
         }
+
     }
     public void setBulletDamage(float dmg) { m_projectileDmg = dmg; baseDamage = dmg; }
     public float getBulletDamage() { return m_projectileDmg; }

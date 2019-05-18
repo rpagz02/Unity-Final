@@ -57,7 +57,7 @@ ModelImporter:
     400050: MeleeZombie
     4300000: Burns_Freak
     4300002: MeleeZombie
-    7400000: Idle
+    7400000: Walker Idle
     9500000: //RootNode
     11100000: //RootNode
     13700000: Burns_Freak
@@ -97,7 +97,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Walker Idle
       takeName: Take 001
       firstFrame: 0
       lastFrame: 180.00002
