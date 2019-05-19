@@ -29,8 +29,8 @@ public class FPS_Controller : MonoBehaviour
         speed = 4;
         controller = GetComponent<CharacterController>();
     }
-	
-	void Update ()
+
+    void Update ()
     {
         if (controller.isGrounded)
         {

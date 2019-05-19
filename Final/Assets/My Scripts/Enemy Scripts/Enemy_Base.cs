@@ -21,6 +21,7 @@ public class Enemy_Damage
     [Header("Enemy Damage Output Variables")]
     [Tooltip("This enemy's base damage amnt")]
     public float m_baseDamage;
+    public GameObject[] AttackColliders;
 }
 
 [System.Serializable]
@@ -39,7 +40,10 @@ public class Enemy_Targeting
     public float m_chaseSpeed;
     [Tooltip("The radius the enemy can wander within")]
     public float m_wanderRadius;
+    [Tooltip("The interval duration between wandering")]
+    public float m_wanderInterval;
     public bool m_Chase;
+    public bool m_Attacking;
 
     [Space(2)]
 
@@ -49,6 +53,7 @@ public class Enemy_Targeting
     [Tooltip("Array of Patrol Points")]
     public GameObject[] PatrolPoints;
 }
+
 [System.Serializable]
 public class Enemy_FX
 {
@@ -66,7 +71,6 @@ public class Enemy_FX
 
 public abstract class Enemy_Base : MonoBehaviour
 {
-
     #region Variables
     [Header("States the Enemy can be in")]
     [Tooltip("The Current State the Enemy is in")]
@@ -89,7 +93,7 @@ public abstract class Enemy_Base : MonoBehaviour
     {
 
     } 
-
+    
     #endregion Start and Update
 
     #region Helper Methods

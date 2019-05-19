@@ -34,3 +34,12 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Final/Assets/Prefabs/Levels/Building Blocks/The Compound.prefab
+Final/Assets/Prefabs/Levels/Building Blocks/Training Room.prefab
+Final/Assets/Scenes/__Game Scenes/Main Hub.unity
+Final/Assets/Scenes/__Game Scenes/Main Hub/LightingData.asset
+Final/Assets/Scenes/__Testing Scenes/Prototyping.unity
+Final/Assets/Scenes/Main Hub/LightingData.asset
+Final/Assets/UI Assets/Videos/Main Menu Particles.mp4
+Final/Assets/Scenes/Main Hub/LightingData.asset
+Final/Assets/Scenes/__Testing Scenes/Prototyping.unity

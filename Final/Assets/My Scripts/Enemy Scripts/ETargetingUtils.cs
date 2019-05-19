@@ -4,31 +4,31 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
+///////////////////////////////////////////////////////////////////////////
+/// These are utility methods to be called by the different Enemy        //
+///    classes. Done to free up some space on the Enemy Scripts and      //
+///    make them more generic.                                           //
+///////////////////////////////////////////////////////////////////////////
+
 public static class ETargetingUtils
 {
-    ///////////////////////////////////////////////////////////////// 
-    /// These are utility methods to be called by the different Enemy 
-    ///    classes. Done to free up some space on the Enemy Scripts and
-    ///    make them more generic.
-    /////////////////////////////////////////////////////////////////
-
     #region AI Targeting Methods
-
-    public static void AI_Wander(GameObject thisObj)
+    // Picks a random Destination for the Agent to move to
+    // and moves the agent there
+    public static void AI_Wander(GameObject thisObj, float radius)
     {
         NavMeshAgent agent = thisObj.GetComponent<NavMeshAgent>();
         agent.isStopped = true;
         agent.ResetPath();
 
-        Vector3 newPos = RandomNavSphere(thisObj.transform.position, 8, -1);
+        Vector3 newPos = RandomNavSphere(thisObj.transform.position, radius, -1);
         thisObj.GetComponent<NavMeshAgent>().SetDestination(newPos);
     }
 
     public static bool AI_Target(GameObject eyePosition, GameObject thisObj, float PursuitRange)
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        if (Player != null)
-        {
+
             #region Shoot the Debug Rays 
             RaycastHit hit;
             Debug.DrawRay(eyePosition.transform.position, thisObj.transform.TransformDirection(Vector3.forward) * PursuitRange, Color.red);
@@ -44,68 +44,68 @@ public static class ETargetingUtils
 
             #region Shooting Rays and Checking for Collision
             if (Physics.Raycast(eyePosition.transform.position, (thisObj.transform.TransformDirection(Vector3.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, thisObj.transform.TransformDirection(Vector3.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(11, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(11, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(22, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(22, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(33, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(33, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(45, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(45, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(-45, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(-45, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(-33, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(-33, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(-22, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(-22, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
 
             if (Physics.Raycast(eyePosition.transform.position, ((Quaternion.AngleAxis(-11, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange), out hit, PursuitRange))
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.transform.tag == "Player")
                 {
                     Debug.DrawRay(eyePosition.transform.position, (Quaternion.AngleAxis(-11, thisObj.transform.up) * thisObj.transform.forward) * PursuitRange, Color.green);
                     return true;
                 }
-        }
+        
         #endregion Shooting Rays and Checking for Collision
 
         return false;
@@ -125,6 +125,7 @@ public static class ETargetingUtils
     }
 
     #endregion AI Targeting Methods
+
 
     #region Helper Methods 
 
