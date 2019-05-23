@@ -77,7 +77,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -87,14 +87,66 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - CHR_Pelvis
+    - CHR_Pelvis/CHR_LThigh
+    - CHR_Pelvis/CHR_LThigh/CHR_LCalf
+    - CHR_Pelvis/CHR_LThigh/CHR_LCalf/CHR_LAnkle
+    - CHR_Pelvis/CHR_LThigh/CHR_LCalf/CHR_LAnkle/CHR_LToe1
+    - CHR_Pelvis/CHR_RThigh
+    - CHR_Pelvis/CHR_RThigh/CHR_RCalf
+    - CHR_Pelvis/CHR_RThigh/CHR_RCalf/CHR_RAnkle
+    - CHR_Pelvis/CHR_RThigh/CHR_RCalf/CHR_RAnkle/CHR_RToe1
+    - CHR_Pelvis/CHR_Spine1
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_LArmCollar
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_LArmCollar/CHR_LArmUpper
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_LArmCollar/CHR_LArmUpper/CHR_LArmForeArm
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_LArmCollar/CHR_LArmUpper/CHR_LArmForeArm/CHR_LArmPalm
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_Neck
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_Neck/CHR_Head
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_RArmCollar
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_RArmCollar/CHR_RArmUpper
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_RArmCollar/CHR_RArmUpper/CHR_RArmForeArm
+    - CHR_Pelvis/CHR_Spine1/CHR_Spine2/CHR_Spine3/CHR_Ribcage/CHR_RArmCollar/CHR_RArmUpper/CHR_RArmForeArm/CHR_RArmPalm
+    - MeleeZombie_NB
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -134,7 +186,132 @@ ModelImporter:
   humanDescription:
     serializedVersion: 2
     human: []
-    skeleton: []
+    skeleton:
+    - name: WalkForward_NB(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: MeleeZombie_NB
+      parentName: WalkForward_NB(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CHR_Pelvis
+      parentName: WalkForward_NB(Clone)
+      position: {x: -0.000000035390258, y: 0.47954977, z: 0.004600479}
+      rotation: {x: 0.48168528, y: -0.5176659, z: -0.48168647, w: 0.5176673}
+      scale: {x: 0.99999994, y: 1, z: 0.9999999}
+    - name: CHR_Spine1
+      parentName: CHR_Pelvis
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.00000062584877, y: -0.000000029802322, z: 0.033643395, w: 0.999434}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000011}
+    - name: CHR_Spine2
+      parentName: CHR_Spine1
+      position: {x: -0.084689446, y: 0.0000000047683715, z: 0.0000000047683715}
+      rotation: {x: 0.00000037252903, y: -0.00000011920929, z: 0.0053865463, w: 0.9999856}
+      scale: {x: 1.0000007, y: 1.0000004, z: 1.0000006}
+    - name: CHR_Spine3
+      parentName: CHR_Spine2
+      position: {x: -0.08468941, y: 0.000000009536743, z: 0.000000009536743}
+      rotation: {x: -0.0000010430813, y: 0.00000008940697, z: -0.046981424, w: 0.99889576}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: CHR_Ribcage
+      parentName: CHR_Spine3
+      position: {x: -0.084689446, y: 0.000000057220458, z: 0}
+      rotation: {x: 0.00000066699914, y: -0.000000072047605, z: 0.052393634, w: 0.9986265}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000001}
+    - name: CHR_LArmCollar
+      parentName: CHR_Ribcage
+      position: {x: 0.007399177, y: 0.038417798, z: 0.008059702}
+      rotation: {x: 0.030004153, y: 0.667024, z: 0.13154778, w: 0.73271686}
+      scale: {x: 1.0000002, y: 1.0000008, z: 1.0000007}
+    - name: CHR_LArmUpper
+      parentName: CHR_LArmCollar
+      position: {x: -0.095745526, y: 0.000000019073486, z: 0}
+      rotation: {x: 0.1253306, y: 0.057799343, z: -0.11565416, w: 0.98365426}
+      scale: {x: 1, y: 0.9999997, z: 1.0000001}
+    - name: CHR_LArmForeArm
+      parentName: CHR_LArmUpper
+      position: {x: -0.16509274, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.019509422, y: -0.021003824, z: -0.03051668, w: 0.9991231}
+      scale: {x: 1.0000005, y: 0.9999993, z: 1}
+    - name: CHR_LArmPalm
+      parentName: CHR_LArmForeArm
+      position: {x: -0.12070485, y: -0.000000019073486, z: -0.000000038146972}
+      rotation: {x: -0.74481916, y: -0.037114803, z: -0.03989612, w: 0.6650378}
+      scale: {x: 1.0000007, y: 1.0000007, z: 1.0000004}
+    - name: CHR_RArmCollar
+      parentName: CHR_Ribcage
+      position: {x: 0.0073992154, y: 0.038417816, z: -0.008059682}
+      rotation: {x: 0.03000417, y: 0.66702396, z: -0.13154769, w: -0.7327169}
+      scale: {x: 1.0000005, y: 1.0000007, z: 1.0000004}
+    - name: CHR_RArmUpper
+      parentName: CHR_RArmCollar
+      position: {x: -0.095745526, y: 0.000000038146972, z: 0.000000038146972}
+      rotation: {x: -0.12533088, y: -0.057799693, z: -0.11565386, w: 0.98365426}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: CHR_RArmForeArm
+      parentName: CHR_RArmUpper
+      position: {x: -0.16509274, y: 0, z: 0}
+      rotation: {x: 0.019509407, y: 0.021004535, z: -0.03051686, w: 0.9991231}
+      scale: {x: 1.000001, y: 1.0000004, z: 1.0000007}
+    - name: CHR_RArmPalm
+      parentName: CHR_RArmForeArm
+      position: {x: -0.120704874, y: -0.000000076293944, z: -0.000000038146972}
+      rotation: {x: 0.7448192, y: 0.037114333, z: -0.039896064, w: 0.6650377}
+      scale: {x: 1.0000008, y: 1.0000001, z: 1.0000007}
+    - name: CHR_Neck
+      parentName: CHR_Ribcage
+      position: {x: -0.040468864, y: 0.03088558, z: -0.000000019073486}
+      rotation: {x: 0.000000189256, y: -0.00000014930119, z: 0.12971868, w: -0.99155086}
+      scale: {x: 1.0000007, y: 1.0000013, z: 1.0000006}
+    - name: CHR_Head
+      parentName: CHR_Neck
+      position: {x: -0.051328965, y: 0, z: 0.0000000047683715}
+      rotation: {x: -0.00000017881393, y: 0.00000011920929, z: -0.12971863, w: -0.99155086}
+      scale: {x: 1.0000007, y: 1.0000002, z: 1.0000006}
+    - name: CHR_LThigh
+      parentName: CHR_Pelvis
+      position: {x: -0.0101582715, y: 0.014224257, z: 0.046265367}
+      rotation: {x: 0.0035128891, y: 0.9953037, z: 0.07510802, w: 0.06096843}
+      scale: {x: 1.0000011, y: 1.0000005, z: 1.0000015}
+    - name: CHR_LCalf
+      parentName: CHR_LThigh
+      position: {x: -0.23023658, y: -0.000000104904174, z: -0.000000021457671}
+      rotation: {x: -0.07699243, y: 0.015223263, z: 0.15079267, w: 0.9854451}
+      scale: {x: 1.0000001, y: 1.0000007, z: 1.0000005}
+    - name: CHR_LAnkle
+      parentName: CHR_LCalf
+      position: {x: -0.20371215, y: -0.000000076293944, z: -0.00000010967254}
+      rotation: {x: 0.038453717, y: 0.05329666, z: -0.47531512, w: 0.87735766}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000004}
+    - name: CHR_LToe1
+      parentName: CHR_LAnkle
+      position: {x: -0.08353248, y: 0.014116611, z: 0.009104571}
+      rotation: {x: -0.007995083, y: -0.015272645, z: -0.38954666, w: 0.9208454}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.000001}
+    - name: CHR_RThigh
+      parentName: CHR_Pelvis
+      position: {x: -0.010158119, y: 0.014224253, z: -0.04626537}
+      rotation: {x: 0.0035127252, y: 0.9953037, z: -0.07510723, w: -0.060968667}
+      scale: {x: 1.0000004, y: 1, z: 1.0000008}
+    - name: CHR_RCalf
+      parentName: CHR_RThigh
+      position: {x: -0.2302367, y: -0.00000015258789, z: 0.000000009536743}
+      rotation: {x: 0.07699222, y: -0.015201919, z: 0.15077807, w: 0.9854477}
+      scale: {x: 1, y: 1.0000005, z: 1.0000005}
+    - name: CHR_RAnkle
+      parentName: CHR_RCalf
+      position: {x: -0.20371215, y: -0.000000076293944, z: 0.0000001001358}
+      rotation: {x: -0.03852174, y: -0.053442195, z: -0.47521573, w: 0.8773996}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000005}
+    - name: CHR_RToe1
+      parentName: CHR_RAnkle
+      position: {x: -0.0835325, y: 0.014116611, z: -0.00910459}
+      rotation: {x: 0.007939638, y: 0.015406966, z: -0.38963202, w: 0.9208075}
+      scale: {x: 1.0000007, y: 1.0000005, z: 1.0000008}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -144,7 +321,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

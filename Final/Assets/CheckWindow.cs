@@ -12,13 +12,16 @@ public class CheckWindow : MonoBehaviour
     public GameObject LoadingText;
     [Space(10)]
     public GameObject[] CheckWindows;
+    private int sceneIndex;
 
     public void OnRestart()
-    {       
+    {
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         GameCanvases.SetActive(false); // Everything else
         LoadingCanvas.SetActive(true); // Loading Canvas
         LoadingText.SetActive(true); // Text
-        StartCoroutine(LoadNewScene(1));
+        StartCoroutine(LoadNewScene(sceneIndex));
     }
     public void OnExitMain()
     {
@@ -49,7 +52,7 @@ public class CheckWindow : MonoBehaviour
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!async.isDone)
         {
-            LoadingText.GetComponent<Text>().text = async.progress.ToString("F1");
+            LoadingText.GetComponent<Text>().text = (async.progress * 100).ToString("F2");
             yield return null;
         }
     }
