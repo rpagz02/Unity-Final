@@ -194,7 +194,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23133233, y: 0.10085879, z: 0.010530294}
+  m_ConnectedAnchor: {x: -0.23133266, y: 0.10085873, z: 0.010530296}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -242,6 +242,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345865
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +327,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.15431039, y: 0.037135933, z: 0.104951374}
+  m_ConnectedAnchor: {x: -0.15431154, y: 0.037136354, z: 0.10495059}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -366,6 +375,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345867
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +460,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23023736, y: -0.00000032782557, z: 0.0000010803342}
+  m_ConnectedAnchor: {x: -0.23023671, y: 0.000000075437136, z: 0.000000029802322}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -490,6 +508,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 0}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345869
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +593,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.16509289, y: 0.00000069011, z: 0.0000006705523}
+  m_ConnectedAnchor: {x: -0.16509286, y: 0.000000022351742, z: -0.00000013411046}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -614,6 +641,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345871
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +792,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345877
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +877,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.010159449, y: 0.014223914, z: 0.046266418}
+  m_ConnectedAnchor: {x: -0.010158237, y: 0.014224115, z: 0.046265345}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -880,6 +925,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345879
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +1040,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.16509269, y: -0.0000006072224, z: 0.0000011846424}
+  m_ConnectedAnchor: {x: -0.16509286, y: -0.0000000037252907, z: 0.0000001564622}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1034,6 +1088,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1143,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 0}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1229,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 0}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1347,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.010159461, y: 0.014223996, z: -0.046264827}
+  m_ConnectedAnchor: {x: -0.010158209, y: 0.014224368, z: -0.046265323}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1314,6 +1395,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1480,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.16304724, y: 0.04466433, z: -0.0965069}
+  m_ConnectedAnchor: {x: -0.16304629, y: 0.04466421, z: -0.09650606}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1438,6 +1528,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1613,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23023668, y: 0.00000035669657, z: 0.0000007376075}
+  m_ConnectedAnchor: {x: -0.23023658, y: 0.000000013038518, z: 0.000000007450581}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1562,6 +1661,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 0}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,7 +1745,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.08467334, y: -0.0013780891, z: 0.0008839137}
+  m_ConnectedAnchor: {x: -0.084673665, y: -0.0013776569, z: 0.0008836506}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1685,6 +1793,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 4225393699752345973}
   DamageText: {fileID: 8484304756855344973}
+  BloodDecals:
+  - {fileID: 100000, guid: 358b75ea5451cf143ab19029a189097d, type: 3}
+  - {fileID: 100000, guid: cfc7596704bbd7f489156fcd4c05c7e9, type: 3}
+  - {fileID: 100000, guid: 18a11fd6df8ceb449b8785301026d639, type: 3}
+  - {fileID: 100000, guid: 6fe4d785744af2c40a2157f5b209d97f, type: 3}
+  - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
+  - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
+  - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  SplatLocation: {fileID: 6480987862508161274}
 --- !u!1 &4225393699752345963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1926,7 @@ Transform:
   m_Children:
   - {fileID: 4225393699752647987}
   - {fileID: 8484304754901592908}
+  - {fileID: 4284717054341981164}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1863,15 +1981,12 @@ MonoBehaviour:
     Player: {fileID: 0}
     PatrolPoints: []
   EnemyFX:
-    Eyes: {fileID: 0}
-    m_pursuitRange: 0
-    m_chaseRange: 0
-    m_attackRange: 0
-    m_chaseSpeed: 0
-    m_wanderRadius: 0
-    m_wanderInterval: 0
-    Player: {fileID: 0}
-    PatrolPoints: []
+    BloodDecal: {fileID: 0}
+    BloodVFX: {fileID: 0}
+    SpawnVFX: {fileID: 0}
+    FireVFX: {fileID: 0}
+    ShoutSFX: {fileID: 0}
+    FootStepSFX: {fileID: 0}
 --- !u!195 &4225393700412166262
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2026,6 +2141,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4225393699752647987}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6480987862508161274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4284717054341981164}
+  m_Layer: 12
+  m_Name: Splat Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4284717054341981164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480987862508161274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.105, z: -0.325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4225393699752647957}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8484304754901592909
 GameObject:

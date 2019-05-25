@@ -6,6 +6,7 @@ public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField]
     private float damageAmnt = 0;
+    private bool damaged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,9 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(this.gameObject);
         if(collision.gameObject.layer == 20) // Player Layer
         {
+            if(!damaged)
             collision.gameObject.GetComponent<FPS_Player>().DamagePlayer(damageAmnt);
+            damaged = true;
         }
     }
 

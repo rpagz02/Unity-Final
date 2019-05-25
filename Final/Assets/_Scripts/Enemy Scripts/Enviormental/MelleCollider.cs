@@ -6,6 +6,7 @@ public class MelleCollider : MonoBehaviour
 {
     public GameObject MyBody;
     private float myDamage = 0;
+    private bool damaged = false;
 
 
     // Set the damage from the unique enemy script in the start function.
@@ -13,8 +14,17 @@ public class MelleCollider : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<FPS_Player>().DamagePlayer(myDamage);
+            if (damaged == false)
+            {
+                other.gameObject.GetComponent<FPS_Player>().DamagePlayer(myDamage);
+                damaged = true;
+            }
         }
+    }
+
+    private void OnTriggerExit()
+    {
+        damaged = false;
     }
 
     public void SetMeleeDamage(float damage)

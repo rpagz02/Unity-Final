@@ -8,7 +8,7 @@ Shader "WFX/Scroll/Smoke"
 		_TintColor ("Tint Color", Color) = (0.5,0.5,0.5,0.5)
 		_MainTex ("Texture", 2D) = "white" {}
 		
-		_ScrollSpeed ("Scroll Speed", Float) = 2.0
+		_ScrollSpeed ("Scroll Speed", Float) = 100
 	}
 	
 	SubShader

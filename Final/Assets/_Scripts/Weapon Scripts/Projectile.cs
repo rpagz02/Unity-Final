@@ -8,8 +8,9 @@ public class Projectile : MonoBehaviour
     private float baseDamage;
     private float range_timer = 0;
     private float range = 0;
-    private float timer = 0;
+
     public GameObject ImpactDecal;
+    public GameObject BloodDecal;
     public GameObject BloodSpray;
 
 

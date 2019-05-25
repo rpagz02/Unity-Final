@@ -19,7 +19,6 @@ public class State_Ragdoll : IState
 
     public void Enter()
     {
-        agent.enabled = false;
         rbs = Owner.GetComponentsInChildren<Rigidbody>();
     }
 
@@ -30,11 +29,16 @@ public class State_Ragdoll : IState
 
     public void Run()
     {
+        if(agent)
         agent.isStopped = true;
+
+        agent.enabled = false;
+
 
         foreach (Rigidbody rb in rbs)
         {
             rb.isKinematic = false;
+            rb.useGravity = true;
             rb.AddExplosionForce(2, (Vector3.right), 2);
         }
         animController.enabled = false;

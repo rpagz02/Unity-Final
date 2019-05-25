@@ -109,7 +109,7 @@ public class BasicTurret : MonoBehaviour
         if (turretParams.Target == null)
             return;
 
-        Transform targetPosition = this.transform;
+        Transform targetPosition = null;
         if (turretParams.Target != null)
             targetPosition = turretParams.Target.transform;
         if (targetPosition)

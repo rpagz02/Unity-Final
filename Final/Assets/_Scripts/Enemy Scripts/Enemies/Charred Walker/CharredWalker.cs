@@ -35,6 +35,7 @@ public class CharredWalker : Enemy_Base
         EnemyTargeting.m_pursuitRange = 12;
         EnemyTargeting.m_chaseRange = 18f;
         EnemyTargeting.m_chaseSpeed = Random.Range(2f, 3.5f);
+        agent.speed = EnemyTargeting.m_chaseSpeed;
         EnemyTargeting.m_wanderRadius = Random.Range(3.5f, 8f);
         EnemyTargeting.m_wanderInterval = Random.Range(2.1f, 4.3f);
         EnemyTargeting.Player = Player;
@@ -126,21 +127,21 @@ public class CharredWalker : Enemy_Base
         {
             for (int i = 0; i < EnemyDamage.AttackColliders.Length; i++)
             {
-                EnemyDamage.AttackColliders[i].SetActive(true);
+                EnemyDamage.AttackColliders[i].SetActive(false);
             }
         }
     }
 
-    public void TakeDamage(float amnt)
-    {
-        if (EnemyHealth.m_Alive)
-        {
-                EnemyHealth.m_currentHealth -= amnt;
-                if (EnemyHealth.m_currentHealth < 0)
-                {
-                    EnemyHealth.m_currentHealth = 0;
-                    EnemyHealth.m_Alive = false;
-                }          
-        }
-    }
+    //public void TakeDamage(float amnt)
+    //{
+    //    if (EnemyHealth.m_Alive)
+    //    {
+    //            EnemyHealth.m_currentHealth -= amnt;
+    //            if (EnemyHealth.m_currentHealth < 0)
+    //            {
+    //                EnemyHealth.m_currentHealth = 0;
+    //                EnemyHealth.m_Alive = false;
+    //            }          
+    //    }
+    //}
 }

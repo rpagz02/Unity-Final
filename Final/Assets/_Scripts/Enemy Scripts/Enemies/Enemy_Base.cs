@@ -80,7 +80,7 @@ public abstract class Enemy_Base : MonoBehaviour
     [Header("Enemy Targeting Variables")]
     public Enemy_Targeting EnemyTargeting;
     [Header("Enemy FX Variables")]
-    public Enemy_Targeting EnemyFX;
+    public Enemy_FX EnemyFX;
     #endregion Variables
 
     #region Start and Update
