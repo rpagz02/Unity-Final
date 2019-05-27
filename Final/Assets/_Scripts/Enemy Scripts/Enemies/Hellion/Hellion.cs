@@ -18,6 +18,7 @@ public class Hellion : Enemy_Base
     private bool StateKilled = false;
     private float GenTimer = 0;
     private float AttackInterval;
+    public float proximity = 12;
 
     public GameObject shotPos;
     public GameObject Projectile;
@@ -82,7 +83,7 @@ public class Hellion : Enemy_Base
                 // If I can see the player...
                 if (ETargetingUtils.AI_TargetBySight(EnemyTargeting.Eyes, this.gameObject, Player, EnemyTargeting.m_pursuitRange))
                 {
-                    this.m_StateMachine.ChangeState(new State_Chase(this.gameObject));
+                    this.m_StateMachine.ChangeState(new State_ChaseAtRange(this.gameObject, proximity));
                     PlayerTargeted = true;
                 }
             }
@@ -101,7 +102,7 @@ public class Hellion : Enemy_Base
                     Fireball = true;
                     GenTimer = 0;
                 }
-                this.m_StateMachine.ChangeState(new State_Chase(this.gameObject));
+                this.m_StateMachine.ChangeState(new State_ChaseAtRange(this.gameObject, proximity));
                 if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Fireball Attack"))
                     agent.isStopped = true;
             }

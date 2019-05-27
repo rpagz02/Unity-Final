@@ -23,6 +23,8 @@ public class MAIN_SceneManager : MonoBehaviour
 
     public void LoadMainMenuScreen()
     {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
         SplashObjects[0].GetComponent<Animator>().SetTrigger("Animate");
         SplashCanvas.SetActive(false);
         MainMenuCanvas.SetActive(true);
@@ -32,7 +34,7 @@ public class MAIN_SceneManager : MonoBehaviour
         MainMenuCanvas.SetActive(false);
         SplashCanvas.SetActive(false);
         LoadingIcon.SetActive(true);
-        StartCoroutine(LoadNewScene(1));
+        StartCoroutine(LoadNewScene(2));
     }
 
     IEnumerator LoadNewScene(int sceneIndex)
@@ -43,7 +45,7 @@ public class MAIN_SceneManager : MonoBehaviour
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!async.isDone)
         {
-            LoadingText.GetComponent<Text>().text = (async.progress * 100).ToString("F1");
+            LoadingText.GetComponent<Text>().text = (async.progress * 100).ToString("F2");
             yield return null;
         }
 

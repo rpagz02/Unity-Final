@@ -22,28 +22,32 @@ public class FPS_WeaponHandling : MonoBehaviour
         // Set and Fill the weapon inventory by the childCount
         //////////////////////////////////////////////////////////////////////////
         WeaponInventory = new GameObject[ArmsWeapons.transform.childCount];     //
-        for(int i = 0; i < ArmsWeapons.transform.childCount; i++)               //
+        for (int i = 0; i < ArmsWeapons.transform.childCount; i++)               //
             WeaponInventory[i] = ArmsWeapons.transform.GetChild(i).gameObject;  //
-       ///////////////////////////////////////////////////////////////////////////                                                                        //
+                                                                                ///////////////////////////////////////////////////////////////////////////                                                                        //
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChangeWeapon();
+        ChangeWeaponByKey();
+        ChangeWeaponByWheel();
     }
 
 
     //Change Weapon using number buttons
-    void ChangeWeapon()
+    void ChangeWeaponByKey()
     {
         if (Input.GetKey(KeyCode.Alpha1)) // index 0
         {
-           if( this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Knife))
+            if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Knife))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.Knife].SetActive(true);
+                if (GetActiveWeaponIndex() == (int)Weapon.Knife)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.Knife].SetActive(true);
+                }
             }
             else
             {
@@ -54,8 +58,11 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Pistol))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.Pistol].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.Pistol)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.Pistol].SetActive(true);
+                }
             }
             else
             {
@@ -66,8 +73,11 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.SMG))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.SMG].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.SMG)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.SMG].SetActive(true);
+                }
             }
             else
             {
@@ -78,20 +88,26 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Shotgun))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.Shotgun].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.Shotgun)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.Shotgun].SetActive(true);
+                }
             }
             else
             {
                 Debug.Log("Weapon Not in Inventory");
             }
         }
-        else if(Input.GetKey(KeyCode.Alpha5)) // index 4
+        else if (Input.GetKey(KeyCode.Alpha5)) // index 4
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Rifle))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.Rifle].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.Rifle)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.Rifle].SetActive(true);
+                }
             }
             else
             {
@@ -102,8 +118,11 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.LMG))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.LMG].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.LMG)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.LMG].SetActive(true);
+                }
             }
             else
             {
@@ -114,20 +133,26 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Crossbow))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.Crossbow].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.Crossbow)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.Crossbow].SetActive(true);
+                }
             }
             else
             {
                 Debug.Log("Weapon Not in Inventory");
             }
         }
-        else if(Input.GetKey(KeyCode.Alpha8)) // index 7
+        else if (Input.GetKey(KeyCode.Alpha8)) // index 7
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.GrenadeLauncher))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.GrenadeLauncher].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.GrenadeLauncher)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.GrenadeLauncher].SetActive(true);
+                }
             }
             else
             {
@@ -138,8 +163,11 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Axe))
             {
-                DeactivateArms();
-                WeaponInventory[(int)Weapon.Axe].SetActive(true);
+                if (GetActiveWeaponIndex() != (int)Weapon.Axe)
+                {
+                    DeactivateArms();
+                    WeaponInventory[(int)Weapon.Axe].SetActive(true);
+                }
             }
             else
             {
@@ -147,10 +175,110 @@ public class FPS_WeaponHandling : MonoBehaviour
             }
         }
     }
+    void ChangeWeaponByWheel()
+    {
+        // Initialization
+        /////////////////////////////////////////////////////////
+        int curWeaponIndex = GetActiveWeaponIndex();
+        int size = WeaponInventory.Length;
+        int[] AvaileWeapons = new int[size];
+        for (int x = 0; x < size; x++)
+        {
+            AvaileWeapons[x] = 0;
+        }
+        /////////////////////////////////////////////////////////
+
+        for (int i = 1; i < WeaponInventory.Length; i++)
+        {
+            if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory(i))
+            {
+                AvaileWeapons[i] = i;
+            }
+            else
+            {
+                AvaileWeapons[i] = 0;
+            }
+        }
+
+        // Check 1
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+
+            int lastIndex = curWeaponIndex;
+
+            for(int i = curWeaponIndex; i < AvaileWeapons.Length; i++)
+            {
+                if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory(i))
+                    lastIndex++;
+            }
+            if (curWeaponIndex == lastIndex - 1)
+            {
+                for (int k = 0; k < AvaileWeapons.Length; k++)
+                {
+                    if (AvaileWeapons[k] != 0)
+                    {
+                        curWeaponIndex = k;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int j = curWeaponIndex + 1; j < AvaileWeapons.Length; j++)
+                {
+                    if (AvaileWeapons[j] != 0)
+                    {
+                        curWeaponIndex = j;
+                        break;
+                    }
+                }
+            }
+
+            DeactivateArms();
+            WeaponInventory[curWeaponIndex].SetActive(true);
+        }
+
+        // Check 2
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            int lastIndex = curWeaponIndex;
+
+            for (int i = curWeaponIndex; i > 0; i--)
+            {
+                if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory(i))
+                    lastIndex--;
+            }
+            if (curWeaponIndex == lastIndex + 1)
+            {
+                for (int k = AvaileWeapons.Length - 1; k >= 1; k--)
+                {
+                    if (AvaileWeapons[k] != 0)
+                    {
+                        curWeaponIndex = k;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int j = curWeaponIndex - 1; j > 0; j--)
+                {
+                    if (AvaileWeapons[j] != 0)
+                    {
+                        curWeaponIndex = j;
+                        break;
+                    }
+                }
+            }
+
+            DeactivateArms();
+            WeaponInventory[curWeaponIndex].SetActive(true);
+        }
+    }
 
     private void DeactivateArms()
     {
-        for(int i = 0; i < WeaponInventory.Length; i++)
+        for (int i = 0; i < WeaponInventory.Length; i++)
         {
             WeaponInventory[i].SetActive(false);
         }
@@ -164,7 +292,7 @@ public class FPS_WeaponHandling : MonoBehaviour
 
     public int GetActiveWeaponIndex()
     {
-        for(int i = 0; i < WeaponInventory.Length; i++)
+        for (int i = 0; i < WeaponInventory.Length; i++)
         {
             if (WeaponInventory[i].activeInHierarchy == true)
                 return i;

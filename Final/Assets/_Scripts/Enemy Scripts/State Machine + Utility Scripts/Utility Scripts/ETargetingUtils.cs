@@ -18,8 +18,11 @@ public static class ETargetingUtils
     public static void AI_Wander(GameObject thisObj, float radius)
     {
         NavMeshAgent agent = thisObj.GetComponent<NavMeshAgent>();
-        agent.isStopped = true;
-        agent.ResetPath();
+        if (agent)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
 
         Vector3 newPos = RandomNavSphere(thisObj.transform.position, radius, -1);
         thisObj.GetComponent<NavMeshAgent>().SetDestination(newPos);
