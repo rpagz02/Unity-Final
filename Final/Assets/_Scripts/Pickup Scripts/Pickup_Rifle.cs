@@ -8,7 +8,7 @@ public class Pickup_Rifle : Pickup
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<FPS_Inventory>().AddWeaponToInventory((int)Weapon.Rifle, 28);
+            other.gameObject.GetComponent<FPS_Inventory>().AddWeaponToInventory((int)Weapon.Rifle, 4);
             other.gameObject.GetComponent<FPS_WeaponHandling>().EquipPickedUpWeapon((int)Weapon.Rifle);
             Destroy(this.gameObject);
         }

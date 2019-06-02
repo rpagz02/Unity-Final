@@ -34,7 +34,7 @@ Material:
     - _LineVis: 1
     - _LinesX: 64
     - _LinesY: 128
-    - _RimPower: 2
+    - _RimPower: 0.4
     - _RimVis: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

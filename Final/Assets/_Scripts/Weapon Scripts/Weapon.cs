@@ -57,6 +57,8 @@ public abstract class Weapon : MonoBehaviour
     protected private GameObject Player;
     protected private bool isReloading;
     protected private float m_Timer;
+    protected private float m_ShotTimer = 0;
+    protected private bool canFire = true;
     protected private AudioSource SFX;
 
     public Weapon_Ammo gunAmmo;
@@ -77,7 +79,7 @@ public abstract class Weapon : MonoBehaviour
     // Helper Methods:                                                    //
     // These cannot be overridden and will be applied to all weapons      //
     ////////////////////////////////////////////////////////////////////////
-    
+
     #region ADS methods
     // Helper Method for ADS()
     protected void ADSToggle()
@@ -110,20 +112,22 @@ public abstract class Weapon : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("Shot");
         gunFX.VFX.GetComponent<ParticleSystem>().Play();
-        SFX.pitch = Random.Range(0.8f, 1f);
+        SFX.pitch = Random.Range(0.9f, 1f);
         SFX.PlayOneShot(gunFX.shotSFX, 0.5f);
 
-        Vector3 direction = gunBullet.m_shotPoint.transform.position + Random.insideUnitSphere * 0.1f;
-        GameObject bullet = Instantiate(gunBullet.m_projectile, direction, gunBullet.m_shotPoint.transform.rotation);
+        Vector3 direction = transform.forward + Random.insideUnitSphere * gunBullet.m_shotRecoil;
+        GameObject bullet = Instantiate(gunBullet.m_projectile, gunBullet.m_shotPoint.transform.position, Quaternion.LookRotation(direction));
         bullet.GetComponent<Projectile>().setBulletDamage(gunBullet.m_bulletDmg);
         bullet.GetComponent<Projectile>().setBulletRange(gunBullet.m_bulletRange);
-        bullet.GetComponent<Rigidbody>().velocity = transform.forward * gunBullet.m_bulletSpeed;
+
+        bullet.GetComponent<Rigidbody>().velocity = direction * gunBullet.m_bulletSpeed;
 
         gunAmmo.m_curClipAmmo--;
     }
 
     protected virtual void AttackHandler()
     {
+        RateOfFireLogic();
         if (gunAmmo.m_curClipAmmo > 0)
         {
             if (!gunBullet.m_Automatic)
@@ -132,12 +136,14 @@ public abstract class Weapon : MonoBehaviour
                 {
                     if (gunAmmo.m_curClipAmmo > 0)
                     {
-                        Debug.Log("Semi-Auto fire called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
-
-                            FireBullet();
+                            if (canFire == true)
+                            {
+                                FireBullet();
+                                canFire = false;
+                            }
                     }
                 }
             }
@@ -147,12 +153,15 @@ public abstract class Weapon : MonoBehaviour
                 {
                     if (gunAmmo.m_curClipAmmo > 0)
                     {
-                        Debug.Log("Semi-Auto fire called");
                         if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Recharge") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Shot") &&
                             !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
+                            if (canFire == true)
+                            {
+                                FireBullet();
+                                canFire = false;
+                            }
 
-                            FireBullet();
                     }
                 }
                 else if (Input.GetMouseButton(0))
@@ -175,9 +184,21 @@ public abstract class Weapon : MonoBehaviour
                 }
             }
         }
-     
+
     }
 
+    protected private void RateOfFireLogic()
+    {
+        if (canFire == false)
+        {
+            m_ShotTimer += Time.deltaTime;
+            if (m_ShotTimer >= gunBullet.m_rateOfFire)
+            {
+                canFire = true;
+                m_ShotTimer = 0;
+            }
+        }
+    }
     protected virtual void ReloadHandler()
     {
 

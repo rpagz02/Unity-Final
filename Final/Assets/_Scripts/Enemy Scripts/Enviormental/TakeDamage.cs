@@ -18,6 +18,7 @@ public class TakeDamage : MonoBehaviour
     private void Start()
     {
         layermask = ~layermask;
+        DamageText.GetComponent<Text>().text = "";
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -67,13 +68,6 @@ public class TakeDamage : MonoBehaviour
                 timer = 0;
                 hit = false;
             }
-        }
-        if (!alive)
-        {
-            DamageText.GetComponent<Text>().color = Color.red;
-            DamageText.GetComponent<Text>().text = "Dead";
-
-            Destroy(this, 0.75f);
         }
     }
 }

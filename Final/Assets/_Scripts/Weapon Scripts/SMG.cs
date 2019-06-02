@@ -7,14 +7,14 @@ public class SMG : Weapon
 
     private void Start()
     {
-        gunAmmo.m_clipSize = 30;
+        gunAmmo.m_clipSize = 24;
         gunAmmo.m_ammoPool = 0;
 
-        gunBullet.m_bulletDmg = 3.5f;
-        gunBullet.m_bulletRange = 18;
-        gunBullet.m_bulletSpeed = 120;
-        gunBullet.m_shotRecoil = 0;
-        gunBullet.m_rateOfFire = 0.12f;
+        gunBullet.m_bulletDmg = 12;
+        gunBullet.m_bulletRange = 2;
+        gunBullet.m_bulletSpeed = 150;
+        gunBullet.m_shotRecoil = 0.05f;
+        gunBullet.m_rateOfFire = 0.08f;
         gunBullet.m_Automatic = true;
 
         gunAmmo.m_WeaponID = (int)Weapons.SMG;

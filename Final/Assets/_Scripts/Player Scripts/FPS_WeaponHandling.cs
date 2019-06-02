@@ -6,7 +6,6 @@ public class FPS_WeaponHandling : MonoBehaviour
 {
     public enum Weapon { Knife, Pistol, SMG, Shotgun, Rifle, LMG, Crossbow, GrenadeLauncher, Axe, Grenade, Flashlight };
 
-
     #region Variables
     [Header("Arms And Weapons")]
     public GameObject ArmsWeapons;
@@ -15,17 +14,13 @@ public class FPS_WeaponHandling : MonoBehaviour
     [SerializeField]
     #endregion Variables
 
-
     // Start is called before the first frame update
     void Start()
     {
         // Set and Fill the weapon inventory by the childCount
-        //////////////////////////////////////////////////////////////////////////
-        WeaponInventory = new GameObject[ArmsWeapons.transform.childCount];     //
-        for (int i = 0; i < ArmsWeapons.transform.childCount; i++)               //
-            WeaponInventory[i] = ArmsWeapons.transform.GetChild(i).gameObject;  //
-                                                                                ///////////////////////////////////////////////////////////////////////////                                                                        //
-
+        WeaponInventory = new GameObject[ArmsWeapons.transform.childCount];     
+        for (int i = 0; i < ArmsWeapons.transform.childCount; i++)               
+            WeaponInventory[i] = ArmsWeapons.transform.GetChild(i).gameObject;                                                                                                                                                         
     }
 
     // Update is called once per frame
@@ -35,7 +30,6 @@ public class FPS_WeaponHandling : MonoBehaviour
         ChangeWeaponByWheel();
     }
 
-
     //Change Weapon using number buttons
     void ChangeWeaponByKey()
     {
@@ -43,7 +37,7 @@ public class FPS_WeaponHandling : MonoBehaviour
         {
             if (this.GetComponent<FPS_Inventory>().SearchWeaponInventory((int)Weapon.Knife))
             {
-                if (GetActiveWeaponIndex() == (int)Weapon.Knife)
+                if (GetActiveWeaponIndex() != (int)Weapon.Knife)
                 {
                     DeactivateArms();
                     WeaponInventory[(int)Weapon.Knife].SetActive(true);
@@ -275,21 +269,19 @@ public class FPS_WeaponHandling : MonoBehaviour
             WeaponInventory[curWeaponIndex].SetActive(true);
         }
     }
-
-    private void DeactivateArms()
+    void DeactivateArms()
     {
         for (int i = 0; i < WeaponInventory.Length; i++)
         {
             WeaponInventory[i].SetActive(false);
         }
     }
-
+    
     public void EquipPickedUpWeapon(int weaponIndex)
     {
         DeactivateArms();
         WeaponInventory[weaponIndex].SetActive(true);
     }
-
     public int GetActiveWeaponIndex()
     {
         for (int i = 0; i < WeaponInventory.Length; i++)

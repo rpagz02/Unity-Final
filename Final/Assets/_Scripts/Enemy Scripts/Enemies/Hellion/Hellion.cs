@@ -27,7 +27,7 @@ public class Hellion : Enemy_Base
     void Start()
     {
         animator = GetComponent<Animator>();
-        AttackInterval = Random.Range(3.2f, 5.3f); ;
+        AttackInterval = Random.Range(2.8f, 4.2f); ;
         rbs = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in rbs){rb.isKinematic = true;}
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -39,14 +39,14 @@ public class Hellion : Enemy_Base
         EnemyDamage.m_baseDamage = 20;
 
         EnemyTargeting.m_attackRange = 3.5f;
-        EnemyTargeting.m_pursuitRange = 25;
-        EnemyTargeting.m_chaseSpeed = Random.Range(3, 7f);
+        EnemyTargeting.m_pursuitRange = 40;
+        EnemyTargeting.m_chaseSpeed = Random.Range(6, 9f);
         agent.speed = EnemyTargeting.m_chaseSpeed;
         EnemyTargeting.Player = Player;
 
 
-        EnemyHealth.m_maxHealth = 125f;
-        EnemyHealth.m_currentHealth = 125f;
+        EnemyHealth.m_maxHealth = 120f;
+        EnemyHealth.m_currentHealth = 120f;
         EnemyHealth.m_Alive = true;
 
         for (int i = 0; i < EnemyDamage.AttackColliders.Length; i++)

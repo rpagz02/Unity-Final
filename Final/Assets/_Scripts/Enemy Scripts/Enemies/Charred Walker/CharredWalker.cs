@@ -15,6 +15,9 @@ public class CharredWalker : Enemy_Base
     private bool Attacking = false;
     private bool StateKilled = false;
 
+    [SerializeField]
+    private bool SpawnedIn = false;
+
 
     void Start()
     {
@@ -34,9 +37,9 @@ public class CharredWalker : Enemy_Base
         EnemyTargeting.m_attackRange = 2.5f;
         EnemyTargeting.m_pursuitRange = 12;
         EnemyTargeting.m_chaseRange = 18f;
-        EnemyTargeting.m_chaseSpeed = Random.Range(2f, 3.5f);
+        EnemyTargeting.m_chaseSpeed = Random.Range(5.5f, 8f);
         agent.speed = EnemyTargeting.m_chaseSpeed;
-        EnemyTargeting.m_wanderRadius = Random.Range(3.5f, 8f);
+        EnemyTargeting.m_wanderRadius = Random.Range(3.5f, 5.5f);
         EnemyTargeting.m_wanderInterval = Random.Range(2.1f, 4.3f);
         EnemyTargeting.Player = Player;
 
@@ -56,34 +59,35 @@ public class CharredWalker : Enemy_Base
 
     public override void Update()
     {
-
-        // First we run the WANDER State
-        this.m_StateMachine.RunCurrentState();
-        // Then we proceed with our state machine logic
-
-        if (!StateKilled)
+        if (SpawnedIn)
         {
-            if (ETargetingUtils.AI_Target(EnemyTargeting.Eyes, this.gameObject, EnemyTargeting.m_pursuitRange) && !TargetingPlayer)
+            // First we run the WANDER State
+            this.m_StateMachine.RunCurrentState();
+            // Then we proceed with our state machine logic
+
+            if (!StateKilled)
             {
-                this.m_StateMachine.ChangeState(new State_Chase(this.gameObject));
-                TargetingPlayer = true;
-                Attacking = false;
+                if (ETargetingUtils.AI_Target(EnemyTargeting.Eyes, this.gameObject, EnemyTargeting.m_pursuitRange) && !TargetingPlayer)
+                {
+                    this.m_StateMachine.ChangeState(new State_Chase(this.gameObject));
+                    TargetingPlayer = true;
+                    Attacking = false;
+                }
+                TargetingLogic();
+                MelleColliderLogic();
             }
-            TargetingLogic();
-            MelleColliderLogic();
+
+
+
+
+            if (EnemyHealth.m_Alive == false && StateKilled == false)
+            {
+
+                this.m_StateMachine.ChangeState(new State_Ragdoll(this.gameObject));
+                StateKilled = true;
+            }
+            if (StateKilled) Destroy(this.gameObject, 5f);
         }
-
-
-
-
-        if(EnemyHealth.m_Alive == false && StateKilled == false)
-        {
-
-            this.m_StateMachine.ChangeState(new State_Ragdoll(this.gameObject));
-            StateKilled = true;
-        }
-        if (StateKilled) Destroy(this.gameObject, 5f);
-
     }
 
     // Checks the Distance from the player and acts accordinly 
@@ -132,16 +136,8 @@ public class CharredWalker : Enemy_Base
         }
     }
 
-    //public void TakeDamage(float amnt)
-    //{
-    //    if (EnemyHealth.m_Alive)
-    //    {
-    //            EnemyHealth.m_currentHealth -= amnt;
-    //            if (EnemyHealth.m_currentHealth < 0)
-    //            {
-    //                EnemyHealth.m_currentHealth = 0;
-    //                EnemyHealth.m_Alive = false;
-    //            }          
-    //    }
-    //}
+    public void ToggleSpawnedIn()
+    {
+        SpawnedIn = true;
+    }
 }

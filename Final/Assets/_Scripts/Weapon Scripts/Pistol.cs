@@ -7,13 +7,13 @@ public class Pistol : Weapon
 
     private void Start()
     {
-        gunAmmo.m_clipSize = 8;
+        gunAmmo.m_clipSize = 16;
         gunAmmo.m_ammoPool = 0;
-        gunBullet.m_bulletDmg = 25.5f;
+        gunBullet.m_bulletDmg = 12.5f;
         gunBullet.m_bulletRange = 2f;
         gunBullet.m_bulletSpeed = 100f;
-        gunBullet.m_shotRecoil = 0;
-        gunBullet.m_rateOfFire = 0.2f;
+        gunBullet.m_shotRecoil = 0.02f;
+        gunBullet.m_rateOfFire = 0.33f;
         gunBullet.m_Automatic = false;
 
         gunAmmo.m_WeaponID = (int)Weapons.Pistol;

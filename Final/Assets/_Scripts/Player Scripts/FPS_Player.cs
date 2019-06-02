@@ -32,10 +32,6 @@ public class FPS_Player : MonoBehaviour
     public GameObject dmgFlashIndicator;
     private Color flashColor = new Color(1f,0f,0f,0.1f);
     private bool damaged = false;
-    [Space(10)]
-    public GameObject CanvasMenu, CanvasHUD;
-
-
     #endregion Variables
 
     // Start is called before the first frame update
@@ -76,7 +72,8 @@ public class FPS_Player : MonoBehaviour
         if(m_Health_Current <= 0)
         {
             m_Health_Current = 0;
-            isDead = true;           
+            isDead = true;
+
         }
 
         if(isDead)

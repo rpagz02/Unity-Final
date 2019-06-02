@@ -10,37 +10,45 @@ public class Door : MonoBehaviour
     private Animator p1Anim = null;
     private Animator p2Anim = null;
 
+    private AudioSource audioSource;
+    public AudioClip OpenSFX, CloseSFX;
+    private bool open = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        p1Anim = Panel1.GetComponent<Animator>();
-        p2Anim = Panel2.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        if (Panel1 != null && Panel2 != null)
+        {
+            p1Anim = Panel1.GetComponent<Animator>();
+            p2Anim = Panel2.GetComponent<Animator>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ENTER");
         if(other.gameObject.tag == "Player")
         {
-            p2Anim.SetTrigger("open");
-            p1Anim.SetTrigger("open");
+                p1Anim.SetBool("OPEN", true);
+                p2Anim.SetBool("OPEN", true);
+                audioSource.PlayOneShot(OpenSFX, 0.5f);          
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("EXIT");
         if (other.gameObject.tag == "Player")
         {
-            p2Anim.SetTrigger("close");
-            p1Anim.SetTrigger("close");
+
+            p1Anim.SetBool("OPEN", false);
+            p2Anim.SetBool("OPEN", false);
+            audioSource.PlayOneShot(CloseSFX, 0.5f);
         }
     }
 }

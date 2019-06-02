@@ -8,7 +8,7 @@ public class Pickup_GrenadeLauncher : Pickup
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<FPS_Inventory>().AddWeaponToInventory((int)Weapon.GrenadeLauncher, 3);
+            other.gameObject.GetComponent<FPS_Inventory>().AddWeaponToInventory((int)Weapon.GrenadeLauncher, 4);
             other.gameObject.GetComponent<FPS_WeaponHandling>().EquipPickedUpWeapon((int)Weapon.GrenadeLauncher);
             Destroy(this.gameObject);
         }

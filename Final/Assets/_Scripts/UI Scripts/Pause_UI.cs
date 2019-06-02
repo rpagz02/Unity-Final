@@ -15,9 +15,15 @@ public class Pause_UI : MonoBehaviour
     public GameObject CheckWindow_ExitMain;
     public GameObject CheckWindow_ExitDesktop;
     public GameObject[] SplashScreenObjects;
+    [Header("Player Death Variables")]
+    public GameObject DeathImage;
+    public GameObject ResumeButton;
+    private float deathTimer;
+    
     [SerializeField]
     private bool Paused = false;
-    private GameObject Player;
+    public GameObject Player;
+    private bool PlayerInitialSpawn = false;
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     /// The Below Variables are used to gather temporary data from the Player to                     //
     /// pass to the other UI menus. (Current health this round, Current  armor this round.)          //
@@ -33,54 +39,79 @@ public class Pause_UI : MonoBehaviour
         Paused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Player.GetComponent<FPS_Player>().IsDead() == false)
-            PauseHandler();
-        else if (Player.GetComponent<FPS_Player>().IsDead() == true)
-        {
-            Canvases[0].SetActive(false);
-            Canvases[1].SetActive(true);
-            Player.SetActive(false);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+
+        if (Player.activeInHierarchy && PlayerInitialSpawn == false)
+            PlayerInitialSpawn = true;
+
+            if (!Player.GetComponent<FPS_Player>().IsDead())
+                PauseHandler();
+            else if (Player.GetComponent<FPS_Player>().IsDead() == true)
+            {
+                ResumeButton.GetComponent<Button>().interactable = false;
+                DeathImage.SetActive(true);
+                Player.GetComponent<Animator>().enabled = true;
+                Player.GetComponent<CapsuleCollider>().enabled = false;
+                Player.GetComponent<CharacterController>().enabled = false;
+                Player.GetComponent<FPS_Controller>().enabled = false;
+                Player.GetComponent<FPS_MouseLook>().enabled = false;
+                Player.GetComponent<Animator>().SetBool("DeathSequence", true);
+                deathTimer += Time.deltaTime;
+                if (deathTimer >= 5f)
+                {
+                    Time.timeScale = 0;
+                    Canvases[0].SetActive(false);
+                    Canvases[1].SetActive(true);
+                    Player.SetActive(false);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+            }
+        
     }
 
     private void PauseHandler()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (PlayerInitialSpawn)
         {
-            Paused = !Paused;
-        }
-
-        if (Paused)
-        {
-            RefreshPlayerStats();
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;            
-            Canvases[0].SetActive(false);
-            Canvases[1].SetActive(true);           
-            Time.timeScale = 0;
-            Player.SetActive(false);
-        }
-        else if (!Paused)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            if (!Canvases[0].activeInHierarchy && Canvases[1].activeInHierarchy)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Canvases[0].SetActive(true);
-                Canvases[1].SetActive(false);
+                Paused = !Paused;
             }
-            Time.timeScale = 1;
-            Cursor.visible = false;
-            Player.SetActive(true);
+            if (Paused)
+            {
+                RefreshPlayerStats();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Canvases[0].SetActive(false);
+                Canvases[1].SetActive(true);
+                Time.timeScale = 0;
+                Player.SetActive(false);
+            }
 
+
+            else if (!Paused)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                if (!Canvases[0].activeInHierarchy && Canvases[1].activeInHierarchy)
+                {
+                    Canvases[0].SetActive(true);
+                    Canvases[1].SetActive(false);
+                }
+                else if (!Canvases[0].activeInHierarchy && !Canvases[1].activeInHierarchy)
+                {
+                    Canvases[0].SetActive(true);
+                    Canvases[1].SetActive(false);
+                }
+                Time.timeScale = 1;
+                Cursor.visible = false;
+                Player.SetActive(true);
+            }
         }
     }
 

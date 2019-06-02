@@ -10,11 +10,11 @@ public class Shotgun : Weapon
         gunAmmo.m_clipSize = 30;
         gunAmmo.m_ammoPool = 0;
 
-        gunBullet.m_bulletDmg = 5.5f;
-        gunBullet.m_bulletRange = 10f;
+        gunBullet.m_bulletDmg = 8;
+        gunBullet.m_bulletRange = 2f;
         gunBullet.m_bulletSpeed = 500;
-        gunBullet.m_shotRecoil = 0;
-        gunBullet.m_rateOfFire = 1f;
+        gunBullet.m_shotRecoil = 0.005f;
+        gunBullet.m_rateOfFire = 0.867f;
         gunBullet.m_Automatic = false;
 
         gunAmmo.m_WeaponID = (int)Weapons.Shotgun;
@@ -33,18 +33,19 @@ public class Shotgun : Weapon
         GameObject[] Bullets = new GameObject[15];
         for (int i = 0; i < 15; i++)
         {
-            Vector3 direction = gunBullet.m_shotPoint.transform.position + Random.insideUnitSphere * 0.5f;
-            GameObject bullet = Instantiate(gunBullet.m_projectile, direction, gunBullet.m_shotPoint.transform.rotation);
+            GameObject bullet = Instantiate(gunBullet.m_projectile, gunBullet.m_shotPoint.transform.position, gunBullet.m_shotPoint.transform.rotation);
             bullet.GetComponent<Projectile>().setBulletDamage(gunBullet.m_bulletDmg);
             bullet.GetComponent<Projectile>().setBulletRange(gunBullet.m_bulletRange);
 
-            Bullets[i] = bullet;
 
-            //bullet.GetComponent<Rigidbody>().velocity = transform.forward * m_bulletSpeed;
+            Bullets[i] = bullet;
             gunAmmo.m_curClipAmmo--;
         }
-        for(int i = 0; i <15; i++)
-            Bullets[i].GetComponent<Rigidbody>().velocity = transform.forward * gunBullet.m_bulletSpeed;
+        for (int i = 0; i < 15; i++)
+        {
+            Vector3 direction = transform.forward + Random.insideUnitSphere * gunBullet.m_shotRecoil;
+            Bullets[i].GetComponent<Rigidbody>().velocity = direction * gunBullet.m_bulletSpeed;
+        }
     }
 
     protected override void ReloadHandler()

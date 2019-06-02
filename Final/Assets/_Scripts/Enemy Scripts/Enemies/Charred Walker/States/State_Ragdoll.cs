@@ -29,7 +29,7 @@ public class State_Ragdoll : IState
 
     public void Run()
     {
-        if(agent)
+        if(agent.enabled)
         agent.isStopped = true;
 
         agent.enabled = false;
