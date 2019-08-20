@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/__UI Scenes/Main Menu.unity
+    path: Assets/0_Scenes/__UI Scenes/Main Menu.unity
     guid: def43a790d976164696b1226348299bc
   - enabled: 1
-    path: Assets/Scenes/__Game Scenes/Main Hub.unity
-    guid: 5f426b35bdc73df4997868f1ddc6c064
-  - enabled: 1
-    path: Assets/Scenes/__Testing Scenes/Prototyping.unity
+    path: Assets/0_Scenes/__Game Scenes/1_Hangar Bay.unity
     guid: 0c58a128e55e1d549b5b3c4140e5797b
+  - enabled: 1
+    path: Assets/0_Scenes/__Game Scenes/0_Training Room.unity
+    guid: ab97b24141dc74f4ba1d2f23c8ea649f
   m_configObjects: {}

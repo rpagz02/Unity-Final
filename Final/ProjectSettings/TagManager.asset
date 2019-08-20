@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Arms_Weapons
   - HeadShot
+  - SF_Door
+  - Soundtrack
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - playerLight
   - Enemy Projectile
   - Enemy
-  - 
+  - Map Icons
   - 
   - 
   - 
